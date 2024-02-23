@@ -9,7 +9,7 @@ public class CanvasController {
     @RequestMapping
     public String index() {
         //default path
-        return "welcome to canvas";
+        return "welcome to canvas, the greatest website on earth";
     }
 
     @RequestMapping("/show")
