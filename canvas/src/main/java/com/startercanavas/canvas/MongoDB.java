@@ -13,7 +13,9 @@ public class MongoDB {
     public static void main( String[] args ) {
 
         // path to MongoDB client; probably move this later
-        String uri = "mongodb+srv://Tommy:yM0Iah7hRu06ciqC@cmpe202.nducmko.mongodb.net/?retryWrites=true&w=majority";
+        String uri = "mongodb+srv://tommydao:JFSIrjp1AYzJwiKC@cmpe202.nhyxsca.mongodb.net/?retryWrites=true&w=majority";
+
+
 
         //Test database connection using sample data
         try (MongoClient mongoClient = MongoClients.create(uri)) {
