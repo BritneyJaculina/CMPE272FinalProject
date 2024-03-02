@@ -17,4 +17,10 @@ public class CanvasController {
         //path for http://localhost:8080/show
         return "Your classes are...";
     }
+
+    @RequestMapping("/adminHomepage")
+    public String adminHomepage() {
+        //path for http://localhost:8080/adminHomepage
+        return "This is the admin homepage";
+    }
 }
