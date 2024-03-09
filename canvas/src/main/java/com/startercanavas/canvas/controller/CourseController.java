@@ -4,6 +4,7 @@ import com.startercanavas.canvas.model.Course;
 import com.startercanavas.canvas.service.CourseService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,14 @@ import java.util.Optional;
 @RequestMapping("/api/v1/courses")
 public class CourseController {
     @Autowired
-    private CourseService userService;
+    private CourseService courseService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Course>> getCourse(@PathVariable ObjectId id) {
-        return new ResponseEntity<Optional<Course>> (userService.getCourse(id), HttpStatus.OK);
+        return new ResponseEntity<Optional<Course>> (courseService.getCourse(id), HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Course>> updateCourse(@PathVariable ObjectId id) {
+        return new ResponseEntity<Optional<Course>> (courseService.updateCourse(id), HttpStatus.OK);
     }
 }
