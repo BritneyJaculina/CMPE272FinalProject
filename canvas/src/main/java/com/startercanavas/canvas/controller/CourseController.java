@@ -23,7 +23,7 @@ public class CourseController {
     public ResponseEntity<Optional<Course>> getCourse(@PathVariable ObjectId id) {
         return new ResponseEntity<Optional<Course>> (courseService.getCourse(id), HttpStatus.OK);
     }
-    @GetMapping("/{id}")
+    @Update
     public ResponseEntity<Optional<Course>> updateCourse(@PathVariable ObjectId id) {
         return new ResponseEntity<Optional<Course>> (courseService.updateCourse(id), HttpStatus.OK);
     }
