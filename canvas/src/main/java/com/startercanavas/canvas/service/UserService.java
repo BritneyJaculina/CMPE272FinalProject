@@ -1,6 +1,5 @@
 package com.startercanavas.canvas.service;
 
-import com.startercanavas.canvas.model.Course;
 import com.startercanavas.canvas.model.User;
 import com.startercanavas.canvas.repository.UserRepository;
 import org.bson.types.ObjectId;
@@ -17,5 +16,8 @@ public class UserService {
 
     public Optional<User> getUser(ObjectId id) {
         return userRepository.findById(id);
+    }
+    public List<User> getUsersByRole(String role) {
+        return userRepository.findByRole(role);
     }
 }

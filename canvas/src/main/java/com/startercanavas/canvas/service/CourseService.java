@@ -4,7 +4,10 @@ import com.startercanavas.canvas.model.Course;
 import com.startercanavas.canvas.repository.CourseRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 
@@ -18,10 +21,19 @@ public class CourseService {
         return courseRepository.findById(id);
     }
 
+    public List<Course> getAllCourses() {
+        return courseRepository.findAll();
+    }
 
-    public Optional<Course> updateCourse(ObjectId id) {
 
-        return courseRepository.findById(id);
+    // Work in progress, right now will only return whatever payload you send
+    public Optional<Course> updateCourse(Course newCourseData, Optional<Course> oldCourseData) {
+        System.out.println("Old data:" + oldCourseData);
+        System.out.println("New data:" + newCourseData);
+        Course courseToEdit = oldCourseData.get();
+        this.courseRepository.save(newCourseData);
+
+        return courseRepository.findById(newCourseData.getId());
     }
 
 
