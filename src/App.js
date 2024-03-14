@@ -12,6 +12,7 @@ function App() {
         <BrowserRouter>
                 <ToastContainer position = "top-center"/>
                 <Routes>
+                    <Route exact path="/" element={<Login />} />
                     <Route exact path="/Login" element={<Login />} />
                     <Route exact path="/AdminHomePage" element={<AdminHomePage />} />
                 </Routes>
