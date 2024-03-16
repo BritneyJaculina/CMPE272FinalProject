@@ -26,14 +26,27 @@ public class CourseService {
     }
 
 
-    // Work in progress, right now will only return whatever payload you send
-    public Optional<Course> updateCourse(Course newCourseData, Optional<Course> oldCourseData) {
-        System.out.println("Old data:" + oldCourseData);
-        System.out.println("New data:" + newCourseData);
-        Course courseToEdit = oldCourseData.get();
-        this.courseRepository.save(newCourseData);
+    public Optional<Course> updateCourse(Optional<Course> newCourseData, Optional<Course> oldCourseData) {
 
-        return courseRepository.findById(newCourseData.getId());
+        if (oldCourseData.isPresent() && newCourseData.isPresent()) {
+            Course oldCourse = oldCourseData.get();
+            Course newCourse = newCourseData.get();
+
+            oldCourse.setCourseName(newCourse.getCourseName());
+            oldCourse.setPublished(newCourse.getPublished());
+            oldCourse.setAnnouncements(newCourse.getAnnouncements());
+            oldCourse.setAssignments(newCourse.getAssignments());
+            oldCourse.setQuizzes(newCourse.getQuizzes());
+
+            Course updatedCourse = courseRepository.save(oldCourse);
+
+            return Optional.of(updatedCourse);
+        }
+        else
+        {
+            return Optional.empty();
+        }
+
     }
 
 

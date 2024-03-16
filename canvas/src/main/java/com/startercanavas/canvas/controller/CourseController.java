@@ -29,7 +29,7 @@ public class CourseController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Optional<Course>> updateCourse(@Validated @RequestBody Course newCourseData, @PathVariable ObjectId id) {
+    public ResponseEntity<Optional<Course>> updateCourse(@Validated @RequestBody Optional<Course> newCourseData, @PathVariable ObjectId id) {
         Optional<Course> oldCourseData = courseService.getCourse(id);
         return new ResponseEntity<Optional<Course>> (courseService.updateCourse(newCourseData, oldCourseData),HttpStatus.OK);
     }
