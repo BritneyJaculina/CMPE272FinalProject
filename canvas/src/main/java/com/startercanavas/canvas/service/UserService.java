@@ -26,4 +26,8 @@ public class UserService {
         String courseName = course.get().getCourseName();
         return userRepository.findByCourseName("Student", courseName);
     }
+
+    public List<UserEntity> getUsersByRole(String role) {
+        return userRepository.findByRole(role);
+    }
 }

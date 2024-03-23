@@ -6,10 +6,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +25,16 @@ public class UserController {
     @GetMapping("/{role}/{id}")
     public ResponseEntity<List<User>> getStudentsByCourse(@PathVariable ObjectId id){
         return new ResponseEntity<List<User>> (userService.getUserByClass(id), HttpStatus.OK);
+    }
 
+    @GetMapping("/")
+    public ResponseEntity<?> getUsersByRole(@RequestParam(required = false) String role) {
+        if (role != null){
+            List<User> users = userService.getUsersByRole(role);
+            return new ResponseEntity<>(users, HttpStatus.OK);
+        }
+        else {
+            return ResponseEntity.badRequest().body("Please provide a role");
+        }
     }
 }

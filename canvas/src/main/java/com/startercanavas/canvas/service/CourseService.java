@@ -4,7 +4,10 @@ import com.startercanavas.canvas.model.Course;
 import com.startercanavas.canvas.repository.CourseRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 
@@ -18,10 +21,32 @@ public class CourseService {
         return courseRepository.findById(id);
     }
 
+    public List<Course> getAllCourses() {
+        return courseRepository.findAll();
+    }
 
-    public Optional<Course> updateCourse(ObjectId id) {
 
-        return courseRepository.findById(id);
+    public Optional<Course> updateCourse(Optional<Course> newCourseData, Optional<Course> oldCourseData) {
+
+        if (oldCourseData.isPresent() && newCourseData.isPresent()) {
+            Course oldCourse = oldCourseData.get();
+            Course newCourse = newCourseData.get();
+
+            oldCourse.setCourseName(newCourse.getCourseName());
+            oldCourse.setPublished(newCourse.getPublished());
+            oldCourse.setAnnouncements(newCourse.getAnnouncements());
+            oldCourse.setAssignments(newCourse.getAssignments());
+            oldCourse.setQuizzes(newCourse.getQuizzes());
+
+            Course updatedCourse = courseRepository.save(oldCourse);
+
+            return Optional.of(updatedCourse);
+        }
+        else
+        {
+            return Optional.empty();
+        }
+
     }
 
 
