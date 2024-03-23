@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,5 +23,11 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<Optional<User>> getUser(@PathVariable ObjectId id) {
         return new ResponseEntity<Optional<User>> (userService.getUser(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/{role}/{id}")
+    public ResponseEntity<List<User>> getStudentsByCourse(@PathVariable ObjectId id){
+        return new ResponseEntity<List<User>> (userService.getUserByClass(id), HttpStatus.OK);
+
     }
 }
