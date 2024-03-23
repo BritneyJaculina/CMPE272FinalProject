@@ -2,6 +2,7 @@ package com.startercanavas.canvas.service;
 
 import com.startercanavas.canvas.model.Course;
 import com.startercanavas.canvas.model.User;
+import com.startercanavas.canvas.repository.CourseRepository;
 import com.startercanavas.canvas.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,16 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CourseRepository courseRepository;
 
     public Optional<User> getUser(ObjectId id) {
         return userRepository.findById(id);
+    }
+
+    public List<User> getUserByClass(ObjectId id){
+        Optional<Course> course = courseRepository.findById(id);
+        String courseName = course.get().getCourseName();
+        return userRepository.findByCourseName("Student", courseName);
     }
 }
