@@ -6,22 +6,23 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
 import java.util.List;
 
 @Document(collection = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class UserEntity {
 
     @Id
     private ObjectId id;
     private String firstName;
     private String lastName;
     private String email;
-    private String role;
-    private String userName;
+    private Role role;
+    private String username;
     private String password;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private List<Course> courses;
 }
