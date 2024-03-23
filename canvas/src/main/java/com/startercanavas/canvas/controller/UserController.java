@@ -1,6 +1,6 @@
 package com.startercanavas.canvas.controller;
 
-import com.startercanavas.canvas.model.User;
+import com.startercanavas.canvas.model.UserEntity;
 import com.startercanavas.canvas.service.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,8 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<User>> getUser(@PathVariable ObjectId id) {
-        return new ResponseEntity<Optional<User>> (userService.getUser(id), HttpStatus.OK);
+    public ResponseEntity<Optional<UserEntity>> getUser(@PathVariable ObjectId id) {
+        return new ResponseEntity<Optional<UserEntity>> (userService.getUser(id), HttpStatus.OK);
     }
 
     @GetMapping("/")
