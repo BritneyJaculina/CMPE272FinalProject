@@ -22,6 +22,11 @@ public class UserController {
         return new ResponseEntity<Optional<UserEntity>> (userService.getUser(id), HttpStatus.OK);
     }
 
+    @GetMapping("/{role}/{id}")
+    public ResponseEntity<List<User>> getStudentsByCourse(@PathVariable ObjectId id){
+        return new ResponseEntity<List<User>> (userService.getUserByClass(id), HttpStatus.OK);
+    }
+
     @GetMapping("/")
     public ResponseEntity<?> getUsersByRole(@RequestParam(required = false) String role) {
         if (role != null){
