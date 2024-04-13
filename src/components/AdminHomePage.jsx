@@ -1,6 +1,42 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {Link, useParams} from "react-router-dom";
+import axios from 'axios';
 
+const AdminHomePage = () => {
+    const [user, setUser] = useState([]);
+    const { userId } = useParams(); // Get userId from URL params
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/v1/users/${userId}`);
+                setUser(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            }
+        };
+
+        fetchUser();
+    }, [userId]);
+
+    return (
+        <div>
+            <h2>User Details</h2>
+            {user ? (
+                <div>
+                    <p>Name: {user.firstName}</p>
+                    <p>Email: {user.email}</p>
+                    {/* Add more details as needed */}
+                </div>
+            ) : (
+                <p>Loading...</p>
+            )}
+        </div>
+    );
+};
+
+/*
 const AdminHomePage = () => {
     const professors = ["john doe", "bernardo flores", "tommy dao", "justin pau", "professor pranuv"];
     return (
@@ -31,6 +67,8 @@ const AdminHomePage = () => {
         </form>
     );
 }
+
+ */
 
 
 export default AdminHomePage;
