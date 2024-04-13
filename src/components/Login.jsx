@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 //import { TextField } from "@mui/material";
 
-const Login = () => {
+const
+Login = () => {
 
     //const [name, setName] = useState("")
 
@@ -14,13 +15,15 @@ const Login = () => {
 
             <div>password</div>
             <input type="text"/>
-            <Link to="/AdminHomePage"><button>
-                Login
-            </button>
+            <Link to="/admin/65e395715875daa6dcd211a1">
+                <button>
+                    Login
+                </button>
             </Link>
         </form>
     );
 }
+
 
 
 export default Login;
