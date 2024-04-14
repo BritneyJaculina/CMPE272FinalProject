@@ -16,7 +16,7 @@ public interface UserRepository extends MongoRepository<UserEntity, ObjectId> {
     Boolean existsByUsername(String username);
   
     @Query("{'role' : ?0, 'courses.courseName' : ?1}")
-    List<User> findByCourseName(String role, String courseName);
+    List<UserEntity> findByCourseName(String role, String courseName);
 
     List<UserEntity> findByRole(String role);
 }
