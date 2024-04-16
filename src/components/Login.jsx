@@ -5,6 +5,7 @@ import { Form, Button} from 'react-bootstrap';
 import '../stylesheets/Login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import LoginPage from "../pages/LoginPage";
 
 const
 Login = () => {
@@ -58,4 +59,4 @@ Login = () => {
 }
 
 
-export default Login;
+export default LoginPage
