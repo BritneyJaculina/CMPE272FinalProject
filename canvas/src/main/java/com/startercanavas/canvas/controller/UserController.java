@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/users")
+@CrossOrigin(origins="*")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -23,14 +24,14 @@ public class UserController {
     }
 
     @GetMapping("/{role}/{id}")
-    public ResponseEntity<List<User>> getStudentsByCourse(@PathVariable ObjectId id){
-        return new ResponseEntity<List<User>> (userService.getUserByClass(id), HttpStatus.OK);
+    public ResponseEntity<List<UserEntity>> getStudentsByCourse(@PathVariable ObjectId id){
+        return new ResponseEntity<List<UserEntity>> (userService.getUserByClass(id), HttpStatus.OK);
     }
 
     @GetMapping("/")
     public ResponseEntity<?> getUsersByRole(@RequestParam(required = false) String role) {
         if (role != null){
-            List<User> users = userService.getUsersByRole(role);
+            List<UserEntity> users = userService.getUsersByRole(role);
             return new ResponseEntity<>(users, HttpStatus.OK);
         }
         else {

@@ -4,7 +4,7 @@ import {BrowserRouter, Switch, Route, Routes, withRouter } from 'react-router-do
 import {ToastContainer} from "react-bootstrap";
 
 //components
-import Login from './components/Login'
+import Login from './pages/LoginPage'
 import AdminHomePage from './components/AdminHomePage'
 
 function
