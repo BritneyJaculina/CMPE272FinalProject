@@ -18,5 +18,5 @@ public interface UserRepository extends MongoRepository<UserEntity, ObjectId> {
     @Query("{'role' : ?0, 'courses.courseName' : ?1}")
     List<UserEntity> findByCourseName(String role, String courseName);
 
-    List<UserEntity> findByRole(String role);
+    List<UserEntity> findByRole_Name(String roleName);
 }

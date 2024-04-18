@@ -48,7 +48,7 @@ public class AuthController {
         UserEntity user = new UserEntity();
         user.setUsername(signUpRequest.getUsername());
         user.setPassword(passwordEncoder.encode((signUpRequest.getPassword())));
-        Role role = roleRepository.findByName("STUDENT").get();
+        Role role = roleRepository.findByName("ADMIN").get();
         user.setRole(role);
         userRepository.save(user);
         return new ResponseEntity<>("User registered successfully!", HttpStatus.OK);
@@ -65,7 +65,5 @@ public class AuthController {
         AuthResponse authResponse = new AuthResponse(user.getId().toHexString(), token);
         return new ResponseEntity<>(authResponse, HttpStatus.OK);
     }
-
-
 
 }

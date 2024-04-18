@@ -1,6 +1,7 @@
 package com.startercanavas.canvas.controller;
 
 import com.startercanavas.canvas.model.UserEntity;
+import com.startercanavas.canvas.repository.RoleRepository;
 import com.startercanavas.canvas.service.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +19,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<UserEntity>> getUser(@PathVariable ObjectId id) {
-        return new ResponseEntity<Optional<UserEntity>> (userService.getUser(id), HttpStatus.OK);
+
+
+    @GetMapping("/user")
+    public ResponseEntity<Optional<UserEntity>> getUserById(@RequestParam("id") String id)  {
+        ObjectId oid = new ObjectId(id);
+        return new ResponseEntity<Optional<UserEntity>> (userService.getUser(oid), HttpStatus.OK);
     }
 
-    @GetMapping("/{role}/{id}")
-    public ResponseEntity<List<UserEntity>> getStudentsByCourse(@PathVariable ObjectId id){
-        return new ResponseEntity<List<UserEntity>> (userService.getUserByClass(id), HttpStatus.OK);
-    }
+    //@GetMapping("/{role}/{id}")
+    //public ResponseEntity<List<UserEntity>> getStudentsByCourse(@PathVariable ObjectId id){
+        //return new ResponseEntity<List<UserEntity>> (userService.getUserByClass(id), HttpStatus.OK);
+    //}
 
-    @GetMapping("/")
-    public ResponseEntity<?> getUsersByRole(@RequestParam(required = false) String role) {
+    @GetMapping("/role")
+    public ResponseEntity<?> getUsersByRole(@RequestParam("name") String role) {
         if (role != null){
             List<UserEntity> users = userService.getUsersByRole(role);
             return new ResponseEntity<>(users, HttpStatus.OK);
