@@ -5,7 +5,7 @@ import {ToastContainer} from "react-bootstrap";
 
 //components
 import Login from './pages/LoginPage'
-import AdminHomePage from './components/AdminHomePage'
+import AdminHomePage from './pages/AdminHomePage'
 
 function
 App() {
