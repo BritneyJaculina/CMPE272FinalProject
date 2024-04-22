@@ -5,6 +5,7 @@ import LogoutButton from "../components/Logout";
 
 const AdminHomePage = () => {
     const [user, setUser] = useState([]);
+    const [userByRole, setUserByRole] = useState([]);
     const { userId } = useParams(); // Get userId from URL params
     //const [users, setUsers] = useState([]); // Initialize as an empty array
 
@@ -27,8 +28,28 @@ const AdminHomePage = () => {
             }
         };
 
-        fetchUser();
-    }, [userId]);
+
+        const fetchUserByRole = async () => {
+            try {
+                // Modify headers to include security token
+                const token = localStorage.getItem('token'); // Assuming you store the token in localStorage
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                };
+
+                const response = await axios.get(`http://localhost:8080/api/v1/users/role?professorName=FACULTY`, config);
+                setUserByRole(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            }
+        };
+
+        fetchUser()
+        fetchUserByRole();
+    }, [userByRole]);
 
     return (
         <form>
@@ -45,10 +66,10 @@ const AdminHomePage = () => {
             )}
 
             <h3>Fall 2023</h3>
-            {user ? (
+            {userByRole ? (
                 <div>
-                    <li>Name: {user.firstName} {user.lastName}</li>
-                    <li>Email: {user.dateOfBirth}</li>
+                    <li>Name: {userByRole.name} {userByRole.lastName}</li>
+                    <li>Email: {userByRole.dateOfBirth}</li>
                     {/* Add more details as needed */}
                 </div>
             ) : (

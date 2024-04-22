@@ -1,6 +1,7 @@
 package com.startercanavas.canvas.controller;
 
 import com.startercanavas.canvas.model.Course;
+import com.startercanavas.canvas.model.UserEntity;
 import com.startercanavas.canvas.repository.CourseRepository;
 import com.startercanavas.canvas.service.CourseService;
 import org.bson.types.ObjectId;
@@ -34,4 +35,11 @@ public class CourseController {
         Optional<Course> oldCourseData = courseService.getCourse(id);
         return new ResponseEntity<Optional<Course>> (courseService.updateCourse(newCourseData, oldCourseData),HttpStatus.OK);
     }
+
+    @GetMapping("/professor")
+    public ResponseEntity<List<Course>> getCoursesByProfessor(@RequestParam("professorName") String profName)  {
+        return new ResponseEntity<List<Course>> (courseService.getAllCoursesByProfessor(profName), HttpStatus.OK);
+    }
+
+
 }
