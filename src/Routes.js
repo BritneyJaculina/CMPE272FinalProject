@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import AdminHomePage from "./pages/AdminHomePage";
+import FacultyHomePage from "./pages/FacultyHomePage";
 
 export const Routes = () => {
     return (
@@ -14,6 +15,9 @@ export const Routes = () => {
                 </Route>
                 <Route path = "/AdminHomePage">
                     <AdminHomePage/>
+                </Route>
+                <Route path = "/FacultyHomePage">
+                    <FacultyHomePage/>
                 </Route>
             </Switch>
         </Router>
