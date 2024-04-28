@@ -48,7 +48,7 @@ public class AuthController {
         UserEntity user = new UserEntity();
         user.setUsername(signUpRequest.getUsername());
         user.setPassword(passwordEncoder.encode((signUpRequest.getPassword())));
-        Role role = roleRepository.findByName("ADMIN").get();
+        Role role = roleRepository.findByName("STUDENT").get();
         user.setRole(role);
         userRepository.save(user);
         return new ResponseEntity<>("User registered successfully!", HttpStatus.OK);
@@ -62,7 +62,7 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
         UserEntity user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow(() -> new UsernameNotFoundException("Username not found"));
-        AuthResponse authResponse = new AuthResponse(user.getId().toHexString(), token);
+        AuthResponse authResponse = new AuthResponse(user.getId().toHexString(), user.getRole().getName(), token);
         return new ResponseEntity<>(authResponse, HttpStatus.OK);
     }
 

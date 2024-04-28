@@ -7,6 +7,7 @@ import {ToastContainer} from "react-bootstrap";
 import Login from './pages/LoginPage'
 import AdminHomePage from './pages/AdminHomePage'
 import FacultyHomePage from "./pages/FacultyHomePage";
+import StudentHomePage from "./pages/StudentHomePage";
 
 function
 App() {
@@ -18,6 +19,8 @@ App() {
                 <Route exact path="/Login" element={<Login/>}/>
                 <Route path="/admin/:userId" element={<AdminHomePage/>}/>
                 <Route path="/faculty/:userId" element={<FacultyHomePage/>}/>
+                <Route path="/student/:userId" element={<StudentHomePage/>}/>
+
             </Routes>
         </BrowserRouter>
 

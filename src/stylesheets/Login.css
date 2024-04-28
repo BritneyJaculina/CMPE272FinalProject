@@ -1,0 +1,30 @@
+html, body {
+    height: 100%;
+}
+.login {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.login .lcontainer {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    align-items: center;
+    border: 0.5px solid gray;
+    padding: 0px 20px 20px 20px;
+    gap: 5px;
+
+}
+
+.login .lcontainer .entryContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+button {
+    width: 100%;
+}
