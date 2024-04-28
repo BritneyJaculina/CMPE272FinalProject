@@ -7,8 +7,10 @@ public class AuthResponse {
     private String accessToken;
     private String tokenType = "Bearer ";
     private String uid;
-    public AuthResponse(String uid, String accessToken) {
+    private String role;
+    public AuthResponse(String uid, String role, String accessToken) {
         this.accessToken = accessToken;
+        this.role = role;
         this.uid = uid;
     }
 }
