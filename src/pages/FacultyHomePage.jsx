@@ -78,6 +78,7 @@ const FacultyHomePage = () => {
                     </ul>
                 </div>
             ))}
+            <LogoutButton />
         </div>
     );
 
