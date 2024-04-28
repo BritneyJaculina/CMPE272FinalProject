@@ -20,6 +20,7 @@ App() {
                 <Route path="/admin/:userId" element={<AdminHomePage/>}/>
                 <Route path="/faculty/:userId" element={<FacultyHomePage/>}/>
                 <Route path="/student/:userId" element={<StudentHomePage/>}/>
+
             </Routes>
         </BrowserRouter>
 
