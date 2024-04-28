@@ -1,7 +1,6 @@
 import React, {useRef} from 'react';
 import {Link} from "react-router-dom";
 
-import { Form, Button} from 'react-bootstrap';
 import '../stylesheets/Login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -24,7 +23,8 @@ const
                 localStorage.setItem('token', result.data.accessToken);
                 console.log("Logged in! Token: " + result.data.accessToken);
                 console.log("result data: " + result.data.uid);
-                navigate('/admin/' + result.data.uid);
+                console.log(result.data.role);
+                navigate('/' + result.data.role + '/' + result.data.uid);
             })
 
 
