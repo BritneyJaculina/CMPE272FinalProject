@@ -1,90 +1,71 @@
 import React, { useState, useEffect } from "react";
-import {Link, useParams} from "react-router-dom";
 import axios from 'axios';
 import LogoutButton from "../components/Logout";
 
 const AdminHomePage = () => {
-    const [user, setUser] = useState([]);
-    const { userId } = useParams(); // Get userId from URL params
-    //const [users, setUsers] = useState([]); // Initialize as an empty array
+    const [courses, setCourses] = useState([]);
+    const [selectedProfessor, setSelectedProfessor] = useState(null);
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchCourses = async () => {
             try {
-                // Modify headers to include security token
-                const token = localStorage.getItem('token'); // Assuming you store the token in localStorage
+                const token = localStorage.getItem('token');
                 const config = {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 };
-
-                const response = await axios.get(`http://localhost:8080/api/v1/users/${userId}`, config);
-                setUser(response.data);
-                console.log(response.data);
+                const response = await axios.get(`http://localhost:8080/api/v1/courses/`, config);
+                setCourses(response.data);
             } catch (error) {
-                console.error('Error fetching user:', error);
+                console.error('Error fetching courses:', error);
             }
         };
+        fetchCourses();
+    }, []);
 
-        fetchUser();
-    }, [userId]);
+    // Organize courses by semester first, then by professor within each semester
+    const coursesBySemester = courses.reduce((acc, course) => {
+        if (!acc[course.semester]) {
+            acc[course.semester] = {};
+        }
+        if (!acc[course.semester][course.professorName]) {
+            acc[course.semester][course.professorName] = [];
+        }
+        acc[course.semester][course.professorName].push(course);
+        return acc;
+    }, {});
+
+    const handleProfessorClick = (professorName) => {
+        setSelectedProfessor(prevProfessor => (prevProfessor === professorName ? null : professorName));
+    };
 
     return (
         <form>
             <h1>San Jose State University</h1>
-            <h3>Spring 2024</h3>
-            {user ? (
-                <div>
-                    <li>Name: {user.firstName} {user.lastName}</li>
-                    <li>Email: {user.dateOfBirth}</li>
-                    {/* Add more details as needed */}
+
+            {Object.entries(coursesBySemester).map(([semester, professors]) => (
+                <div key={semester}>
+                    <h3>Faculty Courses for {semester}</h3>
+                    <ul>
+                        {[...new Set(Object.keys(professors))].map(professor => (
+                            <li key={professor}>
+                                <p onClick={() => handleProfessorClick(professor)}>{professor}</p>
+                                {selectedProfessor === professor && (
+                                    <ul>
+                                        {professors[professor].map(course => (
+                                            <li key={course.id}>{course.courseName}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-            ) : (
-                <br/>
-            )}
+            ))}
 
-            <h3>Fall 2023</h3>
-            {user ? (
-                <div>
-                    <li>Name: {user.firstName} {user.lastName}</li>
-                    <li>Email: {user.dateOfBirth}</li>
-                    {/* Add more details as needed */}
-                </div>
-            ) : (
-                <br/>
-            )}
-
-            <h3>Spring 2023</h3>
-            {user ? (
-                <div>
-                    <li>Name: {user.firstName} {user.lastName}</li>
-                    <li>Email: {user.dateOfBirth}</li>
-                    {/* Add more details as needed */}
-                </div>
-            ) : (
-                <br/>
-            )}
-
-            {user.length > 0 ? (
-                <ul>
-                    {user.map(user => (
-                        <li key={user.id}>
-                            <p>Name: {user.courseid}</p>
-                            <p>Email: {user.courseName}</p>
-                            {/* Add more details as needed */}
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No users found for the specified role.</p>
-            )}
-            <LogoutButton/>
-
-
+            <LogoutButton />
         </form>
-
-
     );
 };
 

@@ -49,5 +49,9 @@ public class CourseService {
 
     }
 
+    public List<Course> getAllCoursesByProfessor(String profName) {
+        return courseRepository.findByProfessorName(profName);
+    }
+
 
 }

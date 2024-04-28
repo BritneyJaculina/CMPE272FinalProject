@@ -21,5 +21,7 @@ public class Course {
     private List<String> announcements;
     private List<String> assignments;
     private List<String> quizzes;
+    private String professorName;
+    private String semester;
 
 }
