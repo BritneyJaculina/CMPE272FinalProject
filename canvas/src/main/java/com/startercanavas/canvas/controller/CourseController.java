@@ -21,7 +21,7 @@ public class CourseController {
     private CourseService courseService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Course>> getCourse(@PathVariable ObjectId id) {
+    public ResponseEntity<Optional<Course>> getCourse(@PathVariable String id) {
         return new ResponseEntity<Optional<Course>> (courseService.getCourse(id), HttpStatus.OK);
     }
 
@@ -31,7 +31,7 @@ public class CourseController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Optional<Course>> updateCourse(@Validated @RequestBody Optional<Course> newCourseData, @PathVariable ObjectId id) {
+    public ResponseEntity<Optional<Course>> updateCourse(@Validated @RequestBody Optional<Course> newCourseData, @PathVariable String id) {
         Optional<Course> oldCourseData = courseService.getCourse(id);
         return new ResponseEntity<Optional<Course>> (courseService.updateCourse(newCourseData, oldCourseData),HttpStatus.OK);
     }

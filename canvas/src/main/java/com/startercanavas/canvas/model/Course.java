@@ -16,6 +16,7 @@ import java.util.List;
 public class Course {
     @Id
     private ObjectId id;
+    private String courseID;
     private String courseName;
     private Boolean published;
     private List<String> announcements;
