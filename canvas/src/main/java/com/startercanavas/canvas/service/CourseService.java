@@ -53,5 +53,8 @@ public class CourseService {
         return courseRepository.findByProfessorName(profName);
     }
 
+    public void addCourse(Course newCourse){
+        courseRepository.save(newCourse);
+    }
 
 }

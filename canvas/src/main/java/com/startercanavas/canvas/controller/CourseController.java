@@ -41,5 +41,11 @@ public class CourseController {
         return new ResponseEntity<List<Course>> (courseService.getAllCoursesByProfessor(profName), HttpStatus.OK);
     }
 
+    @PostMapping("/newCourse")
+    public ResponseEntity<String> addDocument(@RequestBody Course newCourse){
+        courseService.addCourse(newCourse);
+        return new ResponseEntity<>("Document successfully added", HttpStatus.CREATED);
+    }
+
 
 }

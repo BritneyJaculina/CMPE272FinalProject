@@ -8,6 +8,7 @@ import Login from './pages/LoginPage'
 import AdminHomePage from './pages/AdminHomePage'
 import FacultyHomePage from "./pages/FacultyHomePage";
 import StudentHomePage from "./pages/StudentHomePage";
+import AddCoursePage from "./pages/AddCoursePage";
 
 function
 App() {
@@ -20,7 +21,7 @@ App() {
                 <Route path="/admin/:userId" element={<AdminHomePage/>}/>
                 <Route path="/faculty/:userId" element={<FacultyHomePage/>}/>
                 <Route path="/student/:userId" element={<StudentHomePage/>}/>
-
+                <Route path ="/admin/:userId/add-course" element={<AddCoursePage/>}/>
             </Routes>
         </BrowserRouter>
 
