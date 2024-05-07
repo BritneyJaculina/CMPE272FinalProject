@@ -1,8 +1,6 @@
 import React, {useRef} from 'react';
-import {Link} from "react-router-dom";
-
-import { Form, Button} from 'react-bootstrap';
 import '../stylesheets/Login.css';
+
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -24,7 +22,8 @@ const
                 localStorage.setItem('token', result.data.accessToken);
                 console.log("Logged in! Token: " + result.data.accessToken);
                 console.log("result data: " + result.data.uid);
-                navigate('/admin/' + result.data.uid);
+                console.log(result.data.role);
+                navigate('/' + result.data.role + '/' + result.data.uid);
             })
 
 
@@ -33,23 +32,29 @@ const
         return (
             <div className = "login">
                 <div className="lcontainer">
-                    <input
-                        type="text"
-                        placeholder="username"
-                        id="username"
-                        ref={usernameRef}
-                        className="linput"
-                    />
+                    <h1>Login</h1>
+                    <div className = "entryContainer">
+                        <span>Username</span>
+                        <input
+                            type="text"
+                            placeholder="type your username"
+                            id="username"
+                            ref={usernameRef}
+                            className="linput"
+                        />
+                    </div>
+                    <div className = "entryContainer">
+                        <span>Password</span>
+                        <input
+                            type="password"
+                            placeholder="type your password"
+                            id="username"
+                            ref={passwordRef}
+                            className="linput"
+                        />
+                    </div>
 
-                    <input
-                        type="password"
-                        placeholder="password"
-                        id="username"
-                        ref={passwordRef}
-                        className="linput"
-                    />
-
-                    <button onClick = {handleClick} className="lButton">
+                    <button onClick={handleClick} className="lButton">
                         Login
                     </button>
 
