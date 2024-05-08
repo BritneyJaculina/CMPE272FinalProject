@@ -1,5 +1,6 @@
 package com.startercanavas.canvas.repository;
 
+import com.startercanavas.canvas.model.Course;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Example;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -22,4 +23,7 @@ public interface UserRepository extends MongoRepository<UserEntity, ObjectId> {
 
     @Query(value = "{'courses.courseName' : ?0}")
     List<UserEntity> findByCourse(String courseName);
+  
+    Optional<UserEntity> findByuserid(String userid);
+
 }

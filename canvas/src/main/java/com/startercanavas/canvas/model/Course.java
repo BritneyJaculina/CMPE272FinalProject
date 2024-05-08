@@ -16,9 +16,11 @@ import java.util.List;
 public class Course {
     @Id
     private ObjectId id;
+    private String courseID;
     private String courseName;
     private Boolean published;
     private List<String> announcements;
+    private List<String> syllabus;
     private List<String> assignments;
     private List<String> quizzes;
     private String professorName;
