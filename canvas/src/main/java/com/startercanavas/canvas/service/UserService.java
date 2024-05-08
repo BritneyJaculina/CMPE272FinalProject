@@ -5,7 +5,6 @@ import com.startercanavas.canvas.repository.CourseRepository;
 import com.startercanavas.canvas.model.UserEntity;
 import com.startercanavas.canvas.repository.RoleRepository;
 import com.startercanavas.canvas.repository.UserRepository;
-import org.apache.catalina.User;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,12 +24,6 @@ public class UserService {
 
     public Optional<UserEntity> getUser(String id) {
         return userRepository.findByuserid(id);
-    }
-
-    public List<UserEntity> getUserByClass(ObjectId id){
-        Optional<Course> course = courseRepository.findById(id);
-        String courseName = course.get().getCourseName();
-        return userRepository.findByCourseName("Student", courseName);
     }
 
     public List<UserEntity> getUsersByRole(String role) {
@@ -60,10 +53,6 @@ public class UserService {
         {
             return Optional.empty();
         }
-    }
-
-    public List<UserEntity> getUsersByCourseName(String courseName) {
-        return userRepository.findByCourse(courseName);
     }
 
 }

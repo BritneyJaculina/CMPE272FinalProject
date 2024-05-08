@@ -92,7 +92,6 @@ const AdminHomePage = () => {
                     </div>
                 ))}
 
-                {/* Button to navigate to AddCoursePage */}
                 <Link to={`${window.location.pathname}/add-course`}>
                     <button>Add Course</button>
                 </Link>

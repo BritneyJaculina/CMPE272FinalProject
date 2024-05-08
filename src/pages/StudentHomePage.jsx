@@ -63,7 +63,6 @@ const StudentHomePage = () => {
                 coursesBySemester[semester].push(courseInfo);
             }
         }
-        console.log(coursesBySemester);
         setCoursesBySemester(coursesBySemester);
     };
 
@@ -88,16 +87,13 @@ const StudentHomePage = () => {
             const userData = {
                 firstName: firstName,
                 lastName: lastName,
-                email: email
+                email: email,
+                gradesList: grades
             };
-            // Assuming your backend endpoint for updating user profile is '/api/v1/users/{userId}'
             await axios.patch(`http://localhost:8080/api/v1/users/${userId}`, userData, config);
-            // Assuming the patch request is successful
-            // You may want to handle success cases (e.g., show a success message) and error cases (e.g., display an error message)
             console.log('Profile updated successfully');
         } catch (error) {
             console.error('Error updating profile:', error);
-            // Handle errors appropriately (e.g., show an error message to the user)
         }
         setShowEditProfile(false);
     };

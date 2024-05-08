@@ -9,8 +9,7 @@ const AddCoursePage = () => {
         semester: ''
     });
     const [courseCreated, setCourseCreated] = useState(false);
-    const navigate = useNavigate(); // useNavigate hook
-
+    const navigate = useNavigate();
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setCourseData(prevData => ({
@@ -29,7 +28,6 @@ const AddCoursePage = () => {
                 }
             };
 
-            // Initialize new course data with default values
             const courseDataWithDefaults = {
                 ...courseData,
                 published: true,
@@ -39,17 +37,14 @@ const AddCoursePage = () => {
             };
 
             await axios.post('http://localhost:8080/api/v1/courses/newCourse', courseDataWithDefaults, config);
-            // Set course created flag to trigger redirection
             setCourseCreated(true);
         } catch (error) {
             console.error('Error creating course:', error);
         }
     };
 
-    // Redirect to previous page after successful creation
     useEffect(() => {
         if (courseCreated) {
-            // Navigate back to the previous page
             navigate(-1);
         }
     }, [courseCreated, navigate]);
