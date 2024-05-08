@@ -4,6 +4,7 @@ import com.startercanavas.canvas.model.Course;
 import com.startercanavas.canvas.model.UserEntity;
 import com.startercanavas.canvas.repository.CourseRepository;
 import com.startercanavas.canvas.service.CourseService;
+import org.apache.coyote.Response;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,5 +48,8 @@ public class CourseController {
         return new ResponseEntity<>("Document successfully added", HttpStatus.CREATED);
     }
 
-
+    @GetMapping("/name")
+    public ResponseEntity<Optional<Course>> getCourseByName(@RequestParam("courseName") String courseName){
+        return new ResponseEntity<Optional<Course>>(courseService.findByCourseName(courseName), HttpStatus.OK);
+    }
 }

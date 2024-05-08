@@ -57,4 +57,7 @@ public class CourseService {
         courseRepository.save(newCourse);
     }
 
+    public Optional<Course> findByCourseName(String courseName){
+        return courseRepository.findByCourseName(courseName);
+    }
 }
