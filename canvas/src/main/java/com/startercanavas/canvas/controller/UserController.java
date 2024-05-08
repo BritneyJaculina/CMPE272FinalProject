@@ -1,5 +1,6 @@
 package com.startercanavas.canvas.controller;
 
+import com.startercanavas.canvas.model.Course;
 import com.startercanavas.canvas.model.UserEntity;
 import com.startercanavas.canvas.repository.RoleRepository;
 import com.startercanavas.canvas.service.UserService;
@@ -42,4 +43,11 @@ public class UserController {
             return ResponseEntity.badRequest().body("Please provide a role");
         }
     }
+
+    @GetMapping("/courseName")
+    public ResponseEntity<?> getUsersByCourseName(@RequestParam("courseName") String courseName) {
+        List<UserEntity> users = userService.getUsersByCourseName(courseName);
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
 }

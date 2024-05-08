@@ -2,6 +2,7 @@ package com.startercanavas.canvas.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.User;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -25,4 +26,5 @@ public class UserEntity {
     private String password;
     private Date dateOfBirth;
     private List<Course> courses;
+    private List<String> gradesList;
 }

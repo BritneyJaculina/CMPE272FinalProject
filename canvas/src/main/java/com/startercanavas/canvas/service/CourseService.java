@@ -60,5 +60,4 @@ public class CourseService {
     public Optional<Course> findByCourseName(String courseName){
         return courseRepository.findByCourseName(courseName);
     }
-
 }
