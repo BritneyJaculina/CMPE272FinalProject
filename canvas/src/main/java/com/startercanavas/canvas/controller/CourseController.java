@@ -49,6 +49,4 @@ public class CourseController {
     public ResponseEntity<Optional<Course>> getCourseByName(@RequestParam("courseName") String courseName){
         return new ResponseEntity<Optional<Course>>(courseService.findByCourseName(courseName), HttpStatus.OK);
     }
-
-
 }

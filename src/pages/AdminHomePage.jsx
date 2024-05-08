@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import LogoutButton from "../components/Logout";
 
 const AdminHomePage = () => {
@@ -11,10 +11,18 @@ const AdminHomePage = () => {
         professorName: '',
         semester: ''
     });
+    const { courseName } = useParams();
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         fetchCourses();
     }, []);
+
+    useEffect(() => {
+        if (courseName) {
+            fetchUsersByCourse();
+        }
+    }, [courseName]);
 
     const fetchCourses = async () => {
         try {
@@ -28,6 +36,15 @@ const AdminHomePage = () => {
             setCourses(response.data);
         } catch (error) {
             console.error('Error fetching courses:', error);
+        }
+    };
+
+    const fetchUsersByCourse = async () => {
+        try {
+            const response = await axios.get(`/api/v1/users/course?courseName=${courseName}`);
+            setUsers(response.data);
+        } catch (error) {
+            console.error('Error fetching users by course:', error);
         }
     };
 
@@ -46,14 +63,6 @@ const AdminHomePage = () => {
         setSelectedProfessor(prevProfessor => (prevProfessor === professorName ? null : professorName));
     };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setNewDocumentData(prevData => ({
-            ...prevData,
-            [name]: value
-        }));
-    };
-
     return (
         <form style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
             <div style={{width: '50%'}}>
@@ -69,7 +78,11 @@ const AdminHomePage = () => {
                                     {selectedProfessor === professor && (
                                         <ul>
                                             {professors[professor].map(course => (
-                                                <li key={course.id}>{course.courseName}</li>
+                                                <li key={course.id}>{
+                                                    <a href={`${window.location.pathname}/course/${course.courseName}`}>
+                                                        {course.courseName}
+                                                    </a>}
+                                                </li>
                                             ))}
                                         </ul>
                                     )}
@@ -84,47 +97,12 @@ const AdminHomePage = () => {
                     <button>Add Course</button>
                 </Link>
 
+
                 <LogoutButton/>
             </div>
         </form>
 
     );
 };
-
-
-/*
-const AdminHomePage = () => {
-    const professors = ["john doe", "bernardo flores", "tommy dao", "justin pau", "professor pranuv"];
-    return (
-        <form>
-            <h1>Admin Homepage</h1>
-            <h2>Faculty Courses for Spring 2024</h2>
-            <li>{professors[0]}</li>
-            <li>{professors[1]}</li>
-            <li>{professors[2]}</li>
-            <br/>
-
-            <h2>Faculty Courses for Fall 2023</h2>
-            <li>{professors[4]}</li>
-            <li>{professors[3]}</li>
-            <li>{professors[2]}</li>
-            <br/>
-
-            <h2>Faculty Courses for Spring 2023</h2>
-            <li>{professors[2]}</li>
-            <li>{professors[3]}</li>
-            <li>{professors[4]}</li>
-            <br/>
-
-            <Link to="/Login"><button>
-                Logout
-            </button>
-            </Link>
-        </form>
-    );
-}
-
- */
-
 
 export default AdminHomePage;
