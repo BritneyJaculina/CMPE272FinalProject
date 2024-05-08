@@ -37,6 +37,26 @@ public class UserService {
         return userRepository.findByRole_Name(role);
     }
 
+    public Optional<UserEntity> updateUser(Optional<UserEntity> newUserData, Optional<UserEntity> oldUserData) {
+
+        if (oldUserData.isPresent() && newUserData.isPresent()) {
+            UserEntity oldUser = oldUserData.get();
+            UserEntity newUser = newUserData.get();
+
+            oldUser.setFirstName(newUser.getFirstName());
+            oldUser.setLastName(newUser.getLastName());
+            oldUser.setEmail(newUser.getEmail());
+
+            UserEntity updatedUser = userRepository.save(oldUser);
+
+            return Optional.of(updatedUser);
+        }
+        else
+        {
+            return Optional.empty();
+        }
+    }
+
     public List<UserEntity> getUsersByCourseName(String courseName) {
         return userRepository.findByCourse(courseName);
     }

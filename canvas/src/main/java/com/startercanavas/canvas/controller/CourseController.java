@@ -1,10 +1,7 @@
 package com.startercanavas.canvas.controller;
 
 import com.startercanavas.canvas.model.Course;
-import com.startercanavas.canvas.model.UserEntity;
-import com.startercanavas.canvas.repository.CourseRepository;
 import com.startercanavas.canvas.service.CourseService;
-import org.apache.coyote.Response;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
