@@ -22,8 +22,8 @@ public class UserService {
     @Autowired
     private RoleRepository roleRepository;
 
-    public Optional<UserEntity> getUser(ObjectId id) {
-        return userRepository.findById(id);
+    public Optional<UserEntity> getUser(String id) {
+        return userRepository.findByuserid(id);
     }
 
     public List<UserEntity> getUserByClass(ObjectId id){
@@ -34,5 +34,26 @@ public class UserService {
 
     public List<UserEntity> getUsersByRole(String role) {
         return userRepository.findByRole_Name(role);
+    }
+    public List<UserEntity> getUsersByCourseName(String courseName) {
+        return userRepository.findByCourse(courseName);
+    }
+
+    public Optional<UserEntity> updateUser(Optional<UserEntity> newUserData, Optional<UserEntity> oldUserData) {
+        if (oldUserData.isPresent() && newUserData.isPresent()) {
+            UserEntity oldUser = oldUserData.get();
+            UserEntity newUser = newUserData.get();
+
+            oldUser.setGradesList(newUser.getGradesList());
+
+
+            UserEntity updatedUser = userRepository.save(oldUser);
+
+            return Optional.of(updatedUser);
+        }
+        else
+        {
+            return Optional.empty();
+        }
     }
 }

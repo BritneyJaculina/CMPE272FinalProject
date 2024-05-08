@@ -33,7 +33,7 @@ const FacultyHomePage = () => {
             const config = getToken();
             const fullName = user.firstName + " " + user.lastName
             const response = await axios.get(`http://localhost:8080/api/v1/courses/professor?professorName=${fullName}`, config);
-            // Organize courses by semester
+
             const courses = response.data.reduce((acc, course) => {
                 if (!acc[course.semester]) {
                     acc[course.semester] = [];
@@ -60,14 +60,13 @@ const FacultyHomePage = () => {
     return (
         <div>
             <h1>San Jose State University</h1>
-            {/* Loop through courses by semester if coursesBySemester contains valid data */}
             {coursesBySemester && Object.entries(coursesBySemester).map(([semester, courses]) => (
                 <div key={semester}>
                     <h3>Courses for {semester}</h3>
                     <ul>
                         {courses.map(course => (
                             <li key={course.courseID}>
-                                {/* Check mark for published */}
+                 
                                 {course.published ? <span style={{color: 'green'}}>&#x2714;</span> :
                                     <span style={{color: 'red'}}>&#x2718;</span>}
                                 <Link to={`/course/${course.courseID}`}>

@@ -17,6 +17,7 @@ public class UserEntity {
 
     @Id
     private ObjectId id;
+    private String userid;
     private String firstName;
     private String lastName;
     private String email;
@@ -25,4 +26,5 @@ public class UserEntity {
     private String password;
     private Date dateOfBirth;
     private List<Course> courses;
+    private List<String> gradesList;
 }
