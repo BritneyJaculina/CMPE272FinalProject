@@ -9,6 +9,7 @@ const CoursePage = ( ) => {
     const [announcementText, setAnnouncementText] = useState('');
     const [assignmentName, setAssignmentName] = useState('');
     const [quizName, setQuizName] = useState('');
+    const [syllabus, setSyllabus] = useState('');
     const [studentsData, setStudentsData] = useState([]);
     const [updatedStudentIndex, setUpdatedStudentIndex] = useState(null);
     const [updatedGrade, setUpdatedGrade] = useState('');
@@ -70,6 +71,21 @@ const CoursePage = ( ) => {
             console.error('Error adding quiz:', error);
         }
         };
+    const updateSyllabus = async () => {
+        try {
+            const config = getToken();
+            const data = {
+                ...course,
+                syllabus: [...course.syllabus, syllabus]
+            };
+
+            await axios.patch(`http://localhost:8080/api/v1/courses/${courseId}`, data, config);
+            fetchCourse();
+            setSyllabus('');
+        } catch (error) {
+            console.error('Error updating syllabus:', error);
+        }
+    };
     const fetchCourse = async () => {
         try {
             const config = getToken();
@@ -134,27 +150,47 @@ const CoursePage = ( ) => {
                     <p>Course Name: {course.courseName}</p>
                     <p>Course Professor: {course.professorName}</p>
                     <div>
+                        <h3>Syllabus</h3>
+                        <ul>
+                            {course.syllabus.map((syllabus, index) => (
+                                <li key={index}>{syllabus}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div>
                         <h3>Announcements</h3>
-                        {course.announcements.map((announcement, index) => (
-                            <p key={index}>{announcement}</p>
-                        ))}
+                        <ul>
+                            {course.announcements.map((announcement, index) => (
+                                <li key={index}>{announcement}</li>
+                            ))}
+                        </ul>
                     </div>
                     <div>
                         <h3>Assignments</h3>
-                        {course.assignments.map((assignment, index) => (
-                            <p key={index}>{assignment}</p>
-                        ))}
+                        <ul>
+                            {course.assignments.map((assignment, index) => (
+                                <li key={index}>{assignment}</li>
+                            ))}
+                        </ul>
                     </div>
                     <div>
                         <h3>Quizzes</h3>
-                        {course.quizzes.map((quiz, index) => (
-                            <p key={index}>{quiz}</p>
-                        ))}
+                        <ul>
+                            {course.quizzes.map((quiz, index) => (
+                                <li key={index}>{quiz}</li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             ) : (
                 <p>Loading...</p>
             )}
+            <div>
+                <h3>Update Syllabus</h3>
+                <textarea value={syllabus} onChange={(e) => setSyllabus(e.target.value)}></textarea>
+                <button onClick={updateSyllabus}>Update Syllabus</button>
+            </div>
+
             <div>
                 <h3>Create Announcement</h3>
                 <input type="text" value={announcementText} onChange={(e) => setAnnouncementText(e.target.value)}/>
@@ -176,12 +212,10 @@ const CoursePage = ( ) => {
             <div>
                 <h3>Students and Grades</h3>
                 {studentsData.map((student, studentIndex) => (
-                    <div key={student.userid} style={{marginBottom: '10px'}}>
+                    <div key={student.userid} style={{ marginBottom: '10px' }}>
                         <p>
-                            <span
-                                style={{fontWeight: 'bold'}}>Name:</span> {student.firstName} {student.lastName}&nbsp;&nbsp;&nbsp;
-                            <span
-                                style={{fontWeight: 'bold'}}>Current Grade:</span> {student.gradesList.find((grade, index) => student.courses[index].courseName === course.courseName)}&nbsp;&nbsp;&nbsp;
+                            <span style={{ fontWeight: 'bold' }}>Name:</span> {student.firstName} {student.lastName}&nbsp;&nbsp;&nbsp;
+                            <span style={{ fontWeight: 'bold' }}>Current Grade:</span> {student.gradesList.find((grade, index) => student.courses[index].courseName === course.courseName)}&nbsp;&nbsp;&nbsp;
                             <button onClick={() => handleUpdateGrade(studentIndex)}>Update Grade</button>
                         </p>
                         {studentIndex === updatedStudentIndex && (
@@ -197,8 +231,7 @@ const CoursePage = ( ) => {
                     </div>
                 ))}
             </div>
-            {/* Button to update grades */}
-            <LogoutButton/>
+            <LogoutButton />
         </div>
     );
 };

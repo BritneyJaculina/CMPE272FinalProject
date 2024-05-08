@@ -20,6 +20,7 @@ public class Course {
     private String courseName;
     private Boolean published;
     private List<String> announcements;
+    private List<String> syllabus;
     private List<String> assignments;
     private List<String> quizzes;
     private String professorName;

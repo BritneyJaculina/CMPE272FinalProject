@@ -51,6 +51,10 @@ public class UserController {
     }
     @GetMapping("/courseName")
     public ResponseEntity<?> getUsersByCourseName(@RequestParam("courseName") String courseName) {
+
+        if (courseName.startsWith("\"") && courseName.endsWith("\"")) {
+            courseName = courseName.substring(1, courseName.length() - 1);
+        }
         List<UserEntity> users = userService.getUsersByCourseName(courseName);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }

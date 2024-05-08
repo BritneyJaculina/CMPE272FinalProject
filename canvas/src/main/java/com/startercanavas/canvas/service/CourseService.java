@@ -34,6 +34,7 @@ public class CourseService {
             oldCourse.setAnnouncements(newCourse.getAnnouncements());
             oldCourse.setAssignments(newCourse.getAssignments());
             oldCourse.setQuizzes(newCourse.getQuizzes());
+            oldCourse.setSyllabus(newCourse.getSyllabus());
 
             Course updatedCourse = courseRepository.save(oldCourse);
 
