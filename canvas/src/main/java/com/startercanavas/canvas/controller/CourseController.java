@@ -1,8 +1,6 @@
 package com.startercanavas.canvas.controller;
 
 import com.startercanavas.canvas.model.Course;
-import com.startercanavas.canvas.model.UserEntity;
-import com.startercanavas.canvas.repository.CourseRepository;
 import com.startercanavas.canvas.service.CourseService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,7 @@ public class CourseController {
     private CourseService courseService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Course>> getCourse(@PathVariable ObjectId id) {
+    public ResponseEntity<Optional<Course>> getCourse(@PathVariable String id) {
         return new ResponseEntity<Optional<Course>> (courseService.getCourse(id), HttpStatus.OK);
     }
 
@@ -31,7 +29,7 @@ public class CourseController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Optional<Course>> updateCourse(@Validated @RequestBody Optional<Course> newCourseData, @PathVariable ObjectId id) {
+    public ResponseEntity<Optional<Course>> updateCourse(@Validated @RequestBody Optional<Course> newCourseData, @PathVariable String id) {
         Optional<Course> oldCourseData = courseService.getCourse(id);
         return new ResponseEntity<Optional<Course>> (courseService.updateCourse(newCourseData, oldCourseData),HttpStatus.OK);
     }
@@ -41,5 +39,14 @@ public class CourseController {
         return new ResponseEntity<List<Course>> (courseService.getAllCoursesByProfessor(profName), HttpStatus.OK);
     }
 
+    @PostMapping("/newCourse")
+    public ResponseEntity<String> addDocument(@RequestBody Course newCourse){
+        courseService.addCourse(newCourse);
+        return new ResponseEntity<>("Document successfully added", HttpStatus.CREATED);
+    }
 
+    @GetMapping("/name")
+    public ResponseEntity<Optional<Course>> getCourseByName(@RequestParam("courseName") String courseName){
+        return new ResponseEntity<Optional<Course>>(courseService.findByCourseName(courseName), HttpStatus.OK);
+    }
 }
