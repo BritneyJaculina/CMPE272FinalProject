@@ -25,4 +25,5 @@ public class UserEntity {
     private String password;
     private Date dateOfBirth;
     private List<Course> courses;
+    private List<Integer> gradesList;
 }
