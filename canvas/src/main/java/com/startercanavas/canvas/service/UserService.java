@@ -7,7 +7,6 @@ import com.startercanavas.canvas.repository.RoleRepository;
 import com.startercanavas.canvas.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,8 +1,6 @@
 package com.startercanavas.canvas.controller;
 
-import com.startercanavas.canvas.model.Course;
 import com.startercanavas.canvas.model.UserEntity;
-import com.startercanavas.canvas.repository.RoleRepository;
 import com.startercanavas.canvas.service.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +44,7 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Optional<UserEntity>> updateCourse(@Validated @RequestBody Optional<UserEntity> newUserData, @PathVariable ObjectId id) {
+    public ResponseEntity<Optional<UserEntity>> updateUser(@Validated @RequestBody Optional<UserEntity> newUserData, @PathVariable ObjectId id) {
         Optional<UserEntity> oldUserData = userService.getUser(id);
         return new ResponseEntity<Optional<UserEntity>> (userService.updateUser(newUserData, oldUserData),HttpStatus.OK);
     }
