@@ -46,6 +46,7 @@ public class UserController {
 
     @GetMapping("/courseName")
     public ResponseEntity<?> getUsersByCourseName(@RequestParam("courseName") String courseName) {
+        courseName = courseName.replace("\"", "");
         List<UserEntity> users = userService.getUsersByCourseName(courseName);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
