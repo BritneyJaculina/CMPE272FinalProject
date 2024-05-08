@@ -25,5 +25,6 @@ public class Course {
     private List<String> quizzes;
     private String professorName;
     private String semester;
+    private String grade;
 
 }

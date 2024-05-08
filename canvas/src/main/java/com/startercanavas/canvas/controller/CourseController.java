@@ -1,8 +1,6 @@
 package com.startercanavas.canvas.controller;
 
 import com.startercanavas.canvas.model.Course;
-import com.startercanavas.canvas.model.UserEntity;
-import com.startercanavas.canvas.repository.CourseRepository;
 import com.startercanavas.canvas.service.CourseService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +39,14 @@ public class CourseController {
         return new ResponseEntity<List<Course>> (courseService.getAllCoursesByProfessor(profName), HttpStatus.OK);
     }
 
+    @PostMapping("/newCourse")
+    public ResponseEntity<String> addDocument(@RequestBody Course newCourse){
+        courseService.addCourse(newCourse);
+        return new ResponseEntity<>("Document successfully added", HttpStatus.CREATED);
+    }
 
+    @GetMapping("/name")
+    public ResponseEntity<Optional<Course>> getCourseByName(@RequestParam("courseName") String courseName){
+        return new ResponseEntity<Optional<Course>>(courseService.findByCourseName(courseName), HttpStatus.OK);
+    }
 }

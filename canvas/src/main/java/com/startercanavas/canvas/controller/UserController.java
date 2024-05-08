@@ -2,7 +2,6 @@ package com.startercanavas.canvas.controller;
 
 import com.startercanavas.canvas.model.Course;
 import com.startercanavas.canvas.model.UserEntity;
-import com.startercanavas.canvas.repository.RoleRepository;
 import com.startercanavas.canvas.service.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +27,6 @@ public class UserController {
         return new ResponseEntity<Optional<UserEntity>> (userService.getUser(id), HttpStatus.OK);
     }
 
-    //@GetMapping("/{role}/{id}")
-    //public ResponseEntity<List<UserEntity>> getStudentsByCourse(@PathVariable ObjectId id){
-        //return new ResponseEntity<List<UserEntity>> (userService.getUserByClass(id), HttpStatus.OK);
-    //}
 
     @PatchMapping("/{id}")
     public ResponseEntity<Optional<UserEntity>> updateUser(@Validated @RequestBody Optional<UserEntity> newUserData, @PathVariable String id) {
@@ -49,12 +44,15 @@ public class UserController {
             return ResponseEntity.badRequest().body("Please provide a role");
         }
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Optional<UserEntity>> updateUser(@Validated @RequestBody Optional<UserEntity> newUserData, @PathVariable ObjectId id) {
+        Optional<UserEntity> oldUserData = userService.getUser(id);
+        return new ResponseEntity<Optional<UserEntity>> (userService.updateUser(newUserData, oldUserData),HttpStatus.OK);
+    }
+
     @GetMapping("/courseName")
     public ResponseEntity<?> getUsersByCourseName(@RequestParam("courseName") String courseName) {
-
-        if (courseName.startsWith("\"") && courseName.endsWith("\"")) {
-            courseName = courseName.substring(1, courseName.length() - 1);
-        }
         List<UserEntity> users = userService.getUsersByCourseName(courseName);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
