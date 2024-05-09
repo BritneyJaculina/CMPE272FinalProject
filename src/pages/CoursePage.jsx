@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import LogoutButton from "../components/Logout";
+import '../stylesheets/Course.css';
 
 const CoursePage = ( ) => {
     const { courseId } = useParams();
@@ -143,95 +144,102 @@ const CoursePage = ( ) => {
     };
 
     return (
-        <div>
-            <h2>Course Details</h2>
-            {course ? (
-                <div>
-                    <p>Course Name: {course.courseName}</p>
-                    <p>Course Professor: {course.professorName}</p>
-                    <div>
-                        <h3>Syllabus</h3>
-                        <ul>
-                            {course.syllabus.map((syllabus, index) => (
-                                <li key={index}>{syllabus}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Announcements</h3>
-                        <ul>
-                            {course.announcements.map((announcement, index) => (
-                                <li key={index}>{announcement}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Assignments</h3>
-                        <ul>
-                            {course.assignments.map((assignment, index) => (
-                                <li key={index}>{assignment}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Quizzes</h3>
-                        <ul>
-                            {course.quizzes.map((quiz, index) => (
-                                <li key={index}>{quiz}</li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-            ) : (
-                <p>Loading...</p>
-            )}
-            <div>
-                <h3>Update Syllabus</h3>
-                <textarea value={syllabus} onChange={(e) => setSyllabus(e.target.value)}></textarea>
-                <button onClick={updateSyllabus}>Update Syllabus</button>
-            </div>
-
-            <div>
-                <h3>Create Announcement</h3>
-                <input type="text" value={announcementText} onChange={(e) => setAnnouncementText(e.target.value)}/>
-                <button onClick={sendAnnouncement}>Send Announcement</button>
-            </div>
-
-            <div>
-                <h3>Add Assignment</h3>
-                <input type="text" value={assignmentName} onChange={(e) => setAssignmentName(e.target.value)}/>
-                <button onClick={addAssignment}>Add Assignment</button>
-            </div>
-
-            <div>
-                <h3>Add Quiz</h3>
-                <input type="text" value={quizName} onChange={(e) => setQuizName(e.target.value)}/>
-                <button onClick={addQuiz}>Add Quiz</button>
-            </div>
-
-            <div>
-                <h3>Students and Grades</h3>
-                {studentsData.map((student, studentIndex) => (
-                    <div key={student.userid} style={{ marginBottom: '10px' }}>
-                        <p>
-                            <span style={{ fontWeight: 'bold' }}>Name:</span> {student.firstName} {student.lastName}&nbsp;&nbsp;&nbsp;
-                            <span style={{ fontWeight: 'bold' }}>Current Grade:</span> {student.gradesList.find((grade, index) => student.courses[index].courseName === course.courseName)}&nbsp;&nbsp;&nbsp;
-                            <button onClick={() => handleUpdateGrade(studentIndex)}>Update Grade</button>
-                        </p>
-                        {studentIndex === updatedStudentIndex && (
-                            <div>
-                                <input
-                                    type="number"
-                                    value={updatedGrade}
-                                    onChange={(e) => setUpdatedGrade(e.target.value)}
-                                />
-                                <button onClick={() => handleSaveGrade(studentIndex)}>Save</button>
+        <div className="courseInfWrapper">
+            <div className="courseInfo">
+                <h2>Course Details</h2>
+                <div className="courseDeets">
+                    {course ? (
+                        <div>
+                            <p>Course Name: {course.courseName}</p>
+                            <p>Course Professor: {course.professorName}</p>
+                            <h3>Syllabus</h3>
+                            <div className="entry">
+                                <ul>
+                                    {course.syllabus.map((syllabus, index) => (
+                                        <li key={index}>{syllabus}</li>
+                                    ))}
+                                </ul>
                             </div>
-                        )}
+                            <h3>Announcements</h3>
+                            <div className="entry">
+                                <ul>
+                                    {course.announcements.map((announcement, index) => (
+                                        <li key={index}>{announcement}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <h3>Assignments</h3>
+                            <div className="entry">
+                                <ul>
+                                    {course.assignments.map((assignment, index) => (
+                                        <li key={index}>{assignment}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <h3>Quizzes</h3>
+                            <div className="entry">
+                                <ul>
+                                    {course.quizzes.map((quiz, index) => (
+                                        <li key={index}>{quiz}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ) : (
+                        <p>Loading...</p>
+                    )}
+                    <h3>Update Syllabus</h3>
+                    <div className="entry">
+                        <textarea value={syllabus} onChange={(e) => setSyllabus(e.target.value)}></textarea>
+                        <button onClick={updateSyllabus}>Update Syllabus</button>
                     </div>
-                ))}
+
+                    <h3>Create Announcement</h3>
+                    <div className="entry">
+                        <input type="text" value={announcementText}
+                               onChange={(e) => setAnnouncementText(e.target.value)}/>
+                        <button onClick={sendAnnouncement}>Send Announcement</button>
+                    </div>
+
+                    <h3>Add Assignment</h3>
+                    <div className="entry">
+                        <input type="text" value={assignmentName} onChange={(e) => setAssignmentName(e.target.value)}/>
+                        <button onClick={addAssignment}>Add Assignment</button>
+                    </div>
+
+                    <h3>Add Quiz</h3>
+                    <div className="entry">
+                        <input type="text" value={quizName} onChange={(e) => setQuizName(e.target.value)}/>
+                        <button onClick={addQuiz}>Add Quiz</button>
+                    </div>
+
+                    <div>
+                        <h3>Students and Grades</h3>
+                        {studentsData.map((student, studentIndex) => (
+                            <div key={student.userid} style={{marginBottom: '10px'}} className = "entry">
+                                <p>
+                            <span
+                                style={{fontWeight: 'bold'}}>Name:</span> {student.firstName} {student.lastName}&nbsp;&nbsp;&nbsp;
+                                    <span
+                                        style={{fontWeight: 'bold'}}>Current Grade:</span> {student.gradesList.find((grade, index) => student.courses[index].courseName === course.courseName)}&nbsp;&nbsp;&nbsp;
+                                    <button onClick={() => handleUpdateGrade(studentIndex)}>Update Grade</button>
+                                </p>
+                                {studentIndex === updatedStudentIndex && (
+                                    <div>
+                                        <input
+                                            type="number"
+                                            value={updatedGrade}
+                                            onChange={(e) => setUpdatedGrade(e.target.value)}
+                                        />
+                                        <button onClick={() => handleSaveGrade(studentIndex)}>Save</button>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                    <LogoutButton/>
+                </div>
             </div>
-            <LogoutButton />
         </div>
     );
 };

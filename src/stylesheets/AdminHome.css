@@ -1,0 +1,31 @@
+.adminHome {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 45px;
+}
+
+.aContainer {
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.entries {
+    border: 0.5px solid gray;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.buttons {
+    margin: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.students {
+    border: 0.5px solid gray;
+    border-radius: 10px;
+    margin: 10px;
+}

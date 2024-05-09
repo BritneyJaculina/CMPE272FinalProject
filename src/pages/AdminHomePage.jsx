@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import {Link, useParams} from "react-router-dom";
 import LogoutButton from "../components/Logout";
+import '../stylesheets/AdminHome.css';
 
 const AdminHomePage = () => {
     const [courses, setCourses] = useState([]);
@@ -64,42 +65,49 @@ const AdminHomePage = () => {
     };
 
     return (
-        <form style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
-            <div style={{width: '50%'}}>
+        <div className = "adminHome">
+            <div className = "aContainer">
                 <h1>San Jose State University</h1>
+                <div className="entries">
+                    {Object.entries(coursesBySemester).map(([semester, professors]) => (
+                        <div key={semester}>
+                            <h3>Faculty Courses for {semester}</h3>
+                            <div className="students">
+                                <ul>
+                                    {[...new Set(Object.keys(professors))].map(professor => (
+                                        <li key={professor}>
+                                            <p onClick={() => handleProfessorClick(professor)}>{professor}</p>
+                                            {selectedProfessor === professor && (
+                                                <ul>
+                                                    {professors[professor].map(course => (
+                                                        <li key={course.id}>{
+                                                            <a href={`${window.location.pathname}/course/${course.courseName}`}>
+                                                                {course.courseName}
+                                                            </a>}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
+                    <div className="buttons">
+                        <Link to={`${window.location.pathname}/add-course`}>
+                            <button>Add Course</button>
+                        </Link>
 
-                {Object.entries(coursesBySemester).map(([semester, professors]) => (
-                    <div key={semester}>
-                        <h3>Faculty Courses for {semester}</h3>
-                        <ul>
-                            {[...new Set(Object.keys(professors))].map(professor => (
-                                <li key={professor}>
-                                    <p onClick={() => handleProfessorClick(professor)}>{professor}</p>
-                                    {selectedProfessor === professor && (
-                                        <ul>
-                                            {professors[professor].map(course => (
-                                                <li key={course.id}>{
-                                                    <a href={`${window.location.pathname}/course/${course.courseName}`}>
-                                                        {course.courseName}
-                                                    </a>}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
+                        <LogoutButton/>
                     </div>
-                ))}
 
-                <Link to={`${window.location.pathname}/add-course`}>
-                    <button>Add Course</button>
-                </Link>
+                </div>
 
 
-                <LogoutButton/>
+
             </div>
-        </form>
+        </div>
 
     );
 };

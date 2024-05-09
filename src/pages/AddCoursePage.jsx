@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import '../stylesheets/AddCourse.css';
 
 const AddCoursePage = () => {
     const [courseData, setCourseData] = useState({
@@ -50,25 +51,30 @@ const AddCoursePage = () => {
     }, [courseCreated, navigate]);
 
     return (
-        <div>
-            <h2>Add Course</h2>
+        <div className= "course">
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="courseName">Course Name:</label>
-                    <br />
-                    <input type="text" id="courseName" name="courseName" value={courseData.courseName} onChange={handleInputChange} />
+                <h2>Add Course</h2>
+                <div className="cContainer">
+                    <div>
+                        <label htmlFor="courseName">Course Name:</label>
+                        <br/>
+                        <input type="text" id="courseName" name="courseName" value={courseData.courseName}
+                               onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="professorName">Professor Name:</label>
+                        <br/>
+                        <input type="text" id="professorName" name="professorName" value={courseData.professorName}
+                               onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="semester">Semester:</label>
+                        <br/>
+                        <input type="text" id="semester" name="semester" value={courseData.semester}
+                               onChange={handleInputChange}/>
+                    </div>
+                    <button type="submit">Create Course</button>
                 </div>
-                <div>
-                    <label htmlFor="professorName">Professor Name:</label>
-                    <br />
-                    <input type="text" id="professorName" name="professorName" value={courseData.professorName} onChange={handleInputChange} />
-                </div>
-                <div>
-                    <label htmlFor="semester">Semester:</label>
-                    <br />
-                    <input type="text" id="semester" name="semester" value={courseData.semester} onChange={handleInputChange} />
-                </div>
-                <button type="submit">Create Course</button>
             </form>
         </div>
     );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import LogoutButton from "../components/Logout";
+import '../stylesheets/StudentHome.css';
 
 const StudentHomePage = () => {
     const [coursesBySemester, setCoursesBySemester] = useState({});
@@ -116,29 +117,32 @@ const StudentHomePage = () => {
     };
 
     return (
-        <div>
+        <div className = "studentHome">
             <h1>Student Home Page</h1>
-            <div style={{ display: 'flex' }}>
+            <div className = "homeWrapper">
+                <div className = "textContainers">
                 <div style={{ flex: 1 }}>
                     {Object.entries(coursesBySemester).map(([semester, courses]) => (
                         <div key={semester}>
                             <h3>Courses for {semester}</h3>
-                            <ul>
-                                {courses.map((course, index) => (
-                                    <li key={course.courseid}>
-                                        {course.published ? (
-                                            <React.Fragment>
-                                                <a href={`${window.location.pathname}/course/${course.courseName}`}>
-                                                    {course.courseName}
-                                                </a>
-                                                {grades[index] && <span> - Grade: {grades[index]}</span>}
-                                            </React.Fragment>
-                                        ) : (
-                                            <span>{course.courseName}</span>
-                                        )}
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className= "entry">
+                                <ul>
+                                    {courses.map((course, index) => (
+                                        <li key={course.courseid}>
+                                            {course.published ? (
+                                                <React.Fragment>
+                                                    <a href={`${window.location.pathname}/course/${course.courseName}`}>
+                                                        {course.courseName}
+                                                    </a>
+                                                    {grades[index] && <span> - Grade: {grades[index]}</span>}
+                                                </React.Fragment>
+                                            ) : (
+                                                <span>{course.courseName}</span>
+                                            )}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -146,30 +150,34 @@ const StudentHomePage = () => {
                     {Object.entries(coursesBySemester).map(([semester, courses]) => (
                         <div key={semester}>
                             <h3>{semester} Announcements</h3>
-                            {courses.map(course => (
-                                <div key={course.courseid}>
-                                    <h4>{course.courseName}</h4>
-                                    {course.announcements && course.announcements.length > 0 ? (
-                                        <ul>
-                                            {course.announcements.map((announcement, index) => (
-                                                <li key={index}>{announcement}</li>
-                                            ))}
-                                        </ul>
-                                    ) : (
-                                        <p>No announcements</p>
-                                    )}
-                                </div>
-                            ))}
+                            <div className= "entry">
+                                {courses.map(course => (
+                                    <div key={course.courseid}>
+                                        <h4>{course.courseName}</h4>
+                                        <div className= "entry">
+                                            {course.announcements && course.announcements.length > 0 ? (
+                                                <ul>
+                                                    {course.announcements.map((announcement, index) => (
+                                                        <li key={index}>{announcement}</li>
+                                                    ))}
+                                                </ul>
+                                            ) : (
+                                                <p>No announcements</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     ))}
                 </div>
-            </div>
+                </div>
             <div>
                 <button onClick={handleEditProfile}>Edit Profile</button>
                 {showEditProfile && (
                     <div>
                         <h2>Edit Profile</h2>
-                        <form>
+                        <form className = "profile">
                             <div>
                                 <label htmlFor="firstName">First Name:</label>
                                 <input
@@ -202,6 +210,8 @@ const StudentHomePage = () => {
                         </form>
                     </div>
                 )}
+
+            </div>
                 <LogoutButton/>
             </div>
         </div>

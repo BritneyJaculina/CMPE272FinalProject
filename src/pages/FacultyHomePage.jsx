@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import LogoutButton from "../components/Logout";
+import '../stylesheets/FacultyHome.css';
 
 const FacultyHomePage = () => {
     const [user, setUser] = useState([]);
@@ -58,11 +59,14 @@ const FacultyHomePage = () => {
     }, [user]);
 
     return (
-        <div>
+        <div className="facultyHome">
+            <div className= "fhContainer">
             <h1>San Jose State University</h1>
+            <div className= "coursesBySem">
             {coursesBySemester && Object.entries(coursesBySemester).map(([semester, courses]) => (
                 <div key={semester}>
                     <h3>Courses for {semester}</h3>
+                    <div className = "courseEntry">
                     <ul>
                         {courses.map(course => (
                             <li key={course.courseID}>
@@ -75,9 +79,13 @@ const FacultyHomePage = () => {
                             </li>
                         ))}
                     </ul>
+                    </div>
                 </div>
             ))}
-            <LogoutButton/>
+                <LogoutButton/>
+            </div>
+
+            </div>
         </div>
     );
 };
