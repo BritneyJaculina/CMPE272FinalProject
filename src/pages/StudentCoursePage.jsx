@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import '../stylesheets/Course.css';
 
 const StudentCoursePage = () => {
     const [courseInfo, setCourseInfo] = useState(null);
@@ -31,20 +32,28 @@ const StudentCoursePage = () => {
     }
 
     return (
-        <div>
-            <h1>Course: {courseInfo.courseName}</h1>
-            <h2>Assignments:</h2>
-            <ul>
-                {courseInfo.assignments.map((assignment, index) => (
-                    <li key={index}>{assignment}</li>
-                ))}
-            </ul>
-            <h2>Quizzes:</h2>
-            <ul>
-                {courseInfo.quizzes.map((quiz, index) => (
-                    <li key={index}>{quiz}</li>
-                ))}
-            </ul>
+        <div className= "courseInfWrapper">
+            <div className = "courseInfo">
+                <h1>Course: {courseInfo.courseName}</h1>
+                <div className = "courseDeets">
+                    <h2>Assignments:</h2>
+                    <div className  = "entry">
+                        <ul>
+                            {courseInfo.assignments.map((assignment, index) => (
+                                <li key={index}>{assignment}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <h2>Quizzes:</h2>
+                    <div className  = "entry">
+                        <ul>
+                            {courseInfo.quizzes.map((quiz, index) => (
+                                <li key={index}>{quiz}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

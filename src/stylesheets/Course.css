@@ -1,0 +1,25 @@
+
+
+.courseInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.courseDeets {
+    border: 0.5px solid gray;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 45px;
+}
+
+.entry {
+    border: 0.5px solid gray;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.courseInfWrapper {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
