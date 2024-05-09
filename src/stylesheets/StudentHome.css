@@ -1,0 +1,29 @@
+.studentHome {
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    gap: 15px;
+}
+.homeWrapper{
+    border: 0.5px solid gray;
+    border-radius: 10px;
+    padding: 20px;
+
+}
+
+.textContainers {
+    display: flex;
+    gap: 35px;
+    margin-bottom: 25px;
+}
+
+
+.profile{
+    border: 0.5px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}

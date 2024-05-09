@@ -20,9 +20,6 @@ const
                 password: password
             }).then((result) => {
                 localStorage.setItem('token', result.data.accessToken);
-                console.log("Logged in! Token: " + result.data.accessToken);
-                console.log("result data: " + result.data.uid);
-                console.log(result.data.role);
                 navigate('/' + result.data.role + '/' + result.data.uid);
             })
 
