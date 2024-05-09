@@ -33,7 +33,7 @@ const CoursePage = ( ) => {
                     announcements: [...course.announcements, announcementText]
                 };
 
-                await axios.patch(`http://localhost:8080/api/v1/courses/${courseId}`, data, config);
+                await axios.patch(`http://54.241.143.51:8080/api/v1/courses/${courseId}`, data, config);
                 fetchCourse();
                 setAnnouncementText('');
             } catch (error) {
@@ -49,7 +49,7 @@ const CoursePage = ( ) => {
                     assignments: [...course.assignments, assignmentName]
                 };
 
-                await axios.patch(`http://localhost:8080/api/v1/courses/${courseId}`, data, config);
+                await axios.patch(`http://54.241.143.51:8080/api/v1/courses/${courseId}`, data, config);
 
                 fetchCourse();
                 setAssignmentName('');
@@ -65,7 +65,7 @@ const CoursePage = ( ) => {
                 ...course,
                 quizzes: [...course.quizzes, quizName]
             }
-            await axios.patch(`http://localhost:8080/api/v1/courses/${courseId}`, data, config);
+            await axios.patch(`http://54.241.143.51:8080/api/v1/courses/${courseId}`, data, config);
             fetchCourse();
             setQuizName('');
         } catch (error) {
@@ -80,7 +80,7 @@ const CoursePage = ( ) => {
                 syllabus: [...course.syllabus, syllabus]
             };
 
-            await axios.patch(`http://localhost:8080/api/v1/courses/${courseId}`, data, config);
+            await axios.patch(`http://54.241.143.51:8080/api/v1/courses/${courseId}`, data, config);
             fetchCourse();
             setSyllabus('');
         } catch (error) {
@@ -90,7 +90,7 @@ const CoursePage = ( ) => {
     const fetchCourse = async () => {
         try {
             const config = getToken();
-            const response = await axios.get(`http://localhost:8080/api/v1/courses/${courseId}`, config);
+            const response = await axios.get(`http://54.241.143.51:8080/api/v1/courses/${courseId}`, config);
             setCourse(response.data);
         } catch (error) {
             console.error('Error fetching course:', error);
@@ -99,7 +99,7 @@ const CoursePage = ( ) => {
     const fetchStudentsAndGrades = async (courseName) => {
         try {
             const config = getToken();
-            const response = await axios.get(`http://localhost:8080/api/v1/users/courseName?courseName=${courseName}`, config);
+            const response = await axios.get(`http://54.241.143.51:8080/api/v1/users/courseName?courseName=${courseName}`, config);
             setStudentsData(response.data);
         } catch (error) {
             console.error('Error fetching students and grades:', error);
@@ -132,7 +132,7 @@ const CoursePage = ( ) => {
             };
 
             const config = getToken();
-            await axios.patch(`http://localhost:8080/api/v1/users/${studentToUpdate.userid}`, updatedStudent, config);
+            await axios.patch(`http://54.241.143.51:8080/api/v1/users/${studentToUpdate.userid}`, updatedStudent, config);
 
             const updatedStudentsData = [...studentsData];
             updatedStudentsData[studentIndex] = updatedStudent;

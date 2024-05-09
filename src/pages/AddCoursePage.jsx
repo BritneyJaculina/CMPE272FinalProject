@@ -37,7 +37,7 @@ const AddCoursePage = () => {
                 quizzes: []
             };
 
-            await axios.post('http://localhost:8080/api/v1/courses/newCourse', courseDataWithDefaults, config);
+            await axios.post('http://54.241.143.51:8080/api/v1/courses/newCourse', courseDataWithDefaults, config);
             setCourseCreated(true);
         } catch (error) {
             console.error('Error creating course:', error);

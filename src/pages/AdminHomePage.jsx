@@ -33,7 +33,7 @@ const AdminHomePage = () => {
                     Authorization: `Bearer ${token}`
                 }
             };
-            const response = await axios.get(`http://localhost:8080/api/v1/courses/`, config);
+            const response = await axios.get(`http://54.241.143.51:8080/api/v1/courses/`, config);
             setCourses(response.data);
         } catch (error) {
             console.error('Error fetching courses:', error);

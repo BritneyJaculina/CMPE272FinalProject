@@ -15,7 +15,7 @@ const
             const username = usernameRef.current.value;
             const password = passwordRef.current.value;
 
-            axios.post('http://localhost:8080/api/auth/login',{
+            axios.post('http://54.241.143.51:8080/api/auth/login',{
                 username: username,
                 password: password
             }).then((result) => {

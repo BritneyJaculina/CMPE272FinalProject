@@ -20,7 +20,7 @@ const StudentCoursePage = () => {
                     Accept: 'application/json'
                 }
             };
-            const response = await axios.get(`http://localhost:8080/api/v1/courses/name?courseName=${courseName}`, config);
+            const response = await axios.get(`http://54.241.143.51:8080/api/v1/courses/name?courseName=${courseName}`, config);
             setCourseInfo(response.data);
         } catch (error) {
             console.error('Error fetching course info:', error);

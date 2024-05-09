@@ -26,7 +26,7 @@ const StudentHomePage = () => {
                     Accept: 'application/json'
                 }
             };
-            const response = await axios.get(`http://localhost:8080/api/v1/users/user?id=${userId}`, config);
+            const response = await axios.get(`http://54.241.143.51:8080/api/v1/users/user?id=${userId}`, config);
             const fetchedCourses = response.data.courses;
             const fetchedGrades = response.data.gradesList;
             setGrades(fetchedGrades);
@@ -44,7 +44,7 @@ const StudentHomePage = () => {
                     Authorization: `Bearer ${token}`
                 }
             };
-            const response = await axios.get(`http://localhost:8080/api/v1/courses/name?courseName=${courseName}`, config);
+            const response = await axios.get(`http://54.241.143.51:8080/api/v1/courses/name?courseName=${courseName}`, config);
             return response.data;
         } catch (error) {
             console.error('Error fetching course info:', error);
@@ -91,7 +91,7 @@ const StudentHomePage = () => {
                 email: email,
                 gradesList: grades
             };
-            await axios.patch(`http://localhost:8080/api/v1/users/${userId}`, userData, config);
+            await axios.patch(`http://54.241.143.51:8080/api/v1/users/${userId}`, userData, config);
             console.log('Profile updated successfully');
         } catch (error) {
             console.error('Error updating profile:', error);
@@ -107,7 +107,7 @@ const StudentHomePage = () => {
                     Authorization: `Bearer ${token}`
                 }
             };
-            const response = await axios.get(`http://localhost:8080/api/v1/users/user?id=${userId}`, config);
+            const response = await axios.get(`http://54.241.143.51:8080/api/v1/users/user?id=${userId}`, config);
             setFirstName(response.data.firstName);
             setLastName(response.data.lastName);
             setEmail(response.data.email);

@@ -22,7 +22,7 @@ const FacultyHomePage = () => {
     const fetchUser = async () => {
         try {
             const config = getToken();
-            const response = await axios.get(`http://localhost:8080/api/v1/users/user?id=${userId}`, config);
+            const response = await axios.get(`http://54.241.143.51:8080/api/v1/users/user?id=${userId}`, config);
             setUser(response.data);
         } catch (error) {
             console.error('Error fetching user:', error);
@@ -33,7 +33,7 @@ const FacultyHomePage = () => {
         try {
             const config = getToken();
             const fullName = user.firstName + " " + user.lastName
-            const response = await axios.get(`http://localhost:8080/api/v1/courses/professor?professorName=${fullName}`, config);
+            const response = await axios.get(`http://54.241.143.51:8080/api/v1/courses/professor?professorName=${fullName}`, config);
 
             const courses = response.data.reduce((acc, course) => {
                 if (!acc[course.semester]) {

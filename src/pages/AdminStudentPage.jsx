@@ -19,7 +19,7 @@ const AdminStudentPage = () => {
                         Accept: 'application/json'
                     }
                 };
-                const response = await axios.get(`http://localhost:8080/api/v1/users/courseName?courseName=${courseName}`, config);
+                const response = await axios.get(`http://54.241.143.51:8080/api/v1/users/courseName?courseName=${courseName}`, config);
                 setCourseInfo(response.data);
                 setStudents(response.data)
             } catch (error) {
