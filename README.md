@@ -39,7 +39,7 @@
 <br/>
 Once the project was completed I worked on deploying the java springboot app to an ec2 aws instance.  
 
-- <br/>Tommy Dao: 
+- <br/>Tommy Dao: I worked on building multiple backend apis for users and courses such as viewing users in a course and courses taught by faculty members. Worked on the student and admin pages by building the logic to sort by semester, using endpoints to get or post data and displaying it onto the page.  I also helped deploy the project to AWS.
 
 <br/>
 
