@@ -6,7 +6,7 @@
 - Pranav Garg
 - Tommy Dao
 
-## This project contains the software components: 
+## This project contains the following software components: 
 ### For all Faculty:
 - View Homepage with list of courses taught by the Faculty member in current and previous semesters
 - Current courses will include Published and Unpublished courses
@@ -41,9 +41,9 @@
 <br/>
 
 ## XP Core Values:
-- Communication
+- Communication: 
 We utilized communication throughout the project by consistently giving updates to the team and coming forward any issues occurred. We valued the idea of communication as it helped us find each other's strengths and weaknesses so we can assign tasks accordingly and help anyone else if needed. By giving updates to each other throughout the week, we easily found bugs and solved them in a timely manner.
-- Simplicity
+- Simplicity: 
 Our group utilized simplicity through our code and in our team meetings. In our code, we tried keeping the code as simple as possible so that anyone that needs to look at the code or use it as reference with minimal confusion. In our team meetings, we kept our details simple to limit the amount of unnecessary comments to further improve the team's understanding of each other's work. 
 
 ## Links: 
