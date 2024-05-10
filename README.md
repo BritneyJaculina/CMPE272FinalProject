@@ -51,3 +51,4 @@ Our group utilized simplicity through our code and in our team meetings. In our 
 - Project Journal: [https://docs.google.com/document/d/1rD8joMzc2PhJd-zIsKkEakwL9KRyt79spwHzkjfMYQw/edit?usp=sharing](url)<br/> 
 - JIRA: [https://teamspartans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog](url) <br/>
 - Wireframes and Diagrams: [https://lucid.app/lucidchart/fdc3d3c1-93bb-448d-ac9e-e2991c2cc9e9/edit?viewport_loc=-1109%2C1363%2C6824%2C2836%2CmAxee0YOkF_o&invitationId=inv_7fcd7910-eeb2-4642-bc7d-9c5b07158c10](url)
+- Burndown Chart: 
