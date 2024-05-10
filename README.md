@@ -1,10 +1,10 @@
 ## Your Team Name: Team Spartan
 
 ## The names of each team member:
-Britney Jaculina
-Justin Pau
-Pranav Garg
-Tommy Dao
+- Britney Jaculina
+- Justin Pau
+- Pranav Garg
+- Tommy Dao
 
 ## This project contains the software components: 
 ### For all Faculty:
@@ -13,33 +13,33 @@ Tommy Dao
 - Add content to Syllabus section
 - View student list for each course
 - View grades for each student for each course
-Assign grades
-Add Assignments and Quizzes
-Post announcements
+- Assign grades
+- Add Assignments and Quizzes
+- Post announcements
 ### For Students:
-View list of enrolled courses in current and previous semesters (course enrollment is outside the scope of this application)
-For each course view content if the course is published
-View published quizzes and published assignments
-View my own grades in each enrolled course
-Set profile information including notifications
+- View list of enrolled courses in current and previous semesters (course enrollment is outside the scope of this application)
+- For each course view content if the course is published
+- View published quizzes and published assignments
+- View my own grades in each enrolled course
+- Set profile information including notifications
 ### For Admins :
-View courses by Faculty by semester
-Assign a course to a Faculty for a new semester
-View student list for each course (no grades visible)
-APIs and UI functionality will be available based on Roles specified above
+- View courses by Faculty by semester
+- Assign a course to a Faculty for a new semester
+- View student list for each course (no grades visible)
+- APIs and UI functionality will be available based on Roles specified above
 
 ## A summary of areas of contributions:
 
-<br/>Britney Jaculina: I worked on creating the react app and connecting it to Spring boot. I also worked on creating endpoints to get professors by semester and students by course. I also created react pages for the admin and student functionality. I collaborated with other teammates to get functionality completed for student and admin roles. I helped deploy the project to AWS and create the deployment and component diagrams.
+- <br/>Britney Jaculina: I worked on creating the react app and connecting it to Spring boot. I also worked on creating endpoints to get professors by semester and students by course. I also created react pages for the admin and student functionality. I collaborated with other teammates to get functionality completed for student and admin roles. I helped deploy the project to AWS and create the deployment and component diagrams.
 
-<br/>Justin Pau: I worked on setting up our spring boot application which served as our backend. I made models for users and courses. I also made controllers for api endpoints. Then I set up spring security and that involved refactoring roles from a string to it's own model. Users would be able to login as a certain role and be able to access certain api endpoints based on their role. I created a register and log in endpoint. When users register their password is encrypted and saved to the database. When a user logs in they get back a jwt token and the user's role. Next I worked on the react page for user log in. I made a call to the backend api and saved the token in local storage. Upon succesful log in they get redirected to a page based on their role. Finally, I did the css for each react page.
+- <br/>Justin Pau: I worked on setting up our spring boot application which served as our backend. I made models for users and courses. I also made controllers for api endpoints. Then I set up spring security and that involved refactoring roles from a string to it's own model. Users would be able to login as a certain role and be able to access certain api endpoints based on their role. I created a register and log in endpoint. When users register their password is encrypted and saved to the database. When a user logs in they get back a jwt token and the user's role. Next I worked on the react page for user log in. I made a call to the backend api and saved the token in local storage. Upon succesful log in they get redirected to a page based on their role. Finally, I did the css for each react page.
 <br/>
 
-<br/>Pranav Garg: I worked on building the backend apis like getting/updating user and course data while also building the functionality for the faculty home page.
+- <br/>Pranav Garg: I worked on building the backend apis like getting/updating user and course data while also building the functionality for the faculty home page.
 <br/>
 Once the project was completed I worked on deploying the java springboot app to an ec2 aws instance.  
 
-<br/>Tommy Dao: 
+- <br/>Tommy Dao: 
 
 <br/>
 
