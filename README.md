@@ -40,6 +40,10 @@
 
 <br/>
 
+## XP Core Values:
+- value#1
+- value#2
+
 ## Links: 
 Link to your team's GitHub Repo: [https://github.com/gopinathsjsu/team-project-team-spartan/tree/dev](url)  <br/>
 Link to your team's Project Journal: [https://docs.google.com/document/d/1rD8joMzc2PhJd-zIsKkEakwL9KRyt79spwHzkjfMYQw/edit?usp=sharing](url)<br/> 
