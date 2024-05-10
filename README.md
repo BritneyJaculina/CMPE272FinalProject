@@ -54,3 +54,4 @@ Our group utilized simplicity through our code and in our team meetings. In our 
 - Burndown Chart:
 
 ![Burndown](https://github.com/gopinathsjsu/team-project-team-spartan/assets/79171004/1cfdf350-1edf-45a9-b639-4f37eadf6eb6)
+All of our sprints were similar in completion
