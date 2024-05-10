@@ -8,7 +8,7 @@ Tommy Dao
 
 A summary of areas of contributions:
 Britney Jaculina: 
-Justin Pau: 
+Justin Pau: I worked on setting up our spring boot application which served as our backend. I made models for users and courses. I also made controllers for api endpoints. Then I set up spring security and that involved refactoring roles from a string to it's own model. Users would be able to login as a certain role and be able to access certain api endpoints based on their role. I created a register and log in endpoint. When users register their password is encrypted and saved to the database. When a user logs in they get back a jwt token and the user's role. Next I worked on the react page for user log in. I made a call to the backend api and saved the token in local storage. Upon succesful log in they get redirected to a page based on their role. Finally, I did the css for each react page.
 Pranav Garg: 
 Tommy Dao: 
 
