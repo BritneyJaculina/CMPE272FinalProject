@@ -47,4 +47,5 @@
 ## Links: 
 Link to your team's GitHub Repo: [https://github.com/gopinathsjsu/team-project-team-spartan/tree/dev](url)  <br/>
 Link to your team's Project Journal: [https://docs.google.com/document/d/1rD8joMzc2PhJd-zIsKkEakwL9KRyt79spwHzkjfMYQw/edit?usp=sharing](url)<br/> 
-Link to JIRA: [https://teamspartans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog](url)
+Link to JIRA: [https://teamspartans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog](url) <br/>
+Link to Wireframes and Diagrams: [https://lucid.app/lucidchart/fdc3d3c1-93bb-448d-ac9e-e2991c2cc9e9/edit?viewport_loc=-1109%2C1363%2C6824%2C2836%2CmAxee0YOkF_o&invitationId=inv_7fcd7910-eeb2-4642-bc7d-9c5b07158c10](url)
