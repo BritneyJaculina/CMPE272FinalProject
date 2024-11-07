@@ -9,13 +9,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 
-@Document(collection = "courses")
+@Document(collection = "accounts")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Course {
+public class Accounts {
     @Id
-    private ObjectId id;
+/*    private ObjectId id;
     private String courseID;
     private String courseName;
     private Boolean published;
@@ -25,6 +25,12 @@ public class Course {
     private List<String> quizzes;
     private String professorName;
     private String semester;
-    private String grade;
+    private String grade;*/
+
+    private ObjectId id;
+    private String account_id;
+    private String user_id;
+    private String account_type;
+    private String balance;
 
 }

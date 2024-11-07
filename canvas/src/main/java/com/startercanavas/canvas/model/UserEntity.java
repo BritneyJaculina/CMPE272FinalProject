@@ -7,6 +7,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public class UserEntity {
 
     @Id
-    private ObjectId id;
+/*    private ObjectId id;
     private String userid;
     private String firstName;
     private String lastName;
@@ -27,5 +28,14 @@ public class UserEntity {
     private String password;
     private Date dateOfBirth;
     private List<Course> courses;
-    private List<String> gradesList;
+    private List<String> gradesList;*/
+
+    private ObjectId id;
+    private String user_id;
+    private String username;
+    private String password;
+    private String first_name;
+    private String last_name;
+    private Timestamp created_at;
+    private Timestamp updated_at;
 }

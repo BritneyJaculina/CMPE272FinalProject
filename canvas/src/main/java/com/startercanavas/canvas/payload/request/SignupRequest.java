@@ -1,6 +1,5 @@
 package com.startercanavas.canvas.payload.request;
 
-import com.startercanavas.canvas.model.Role;
 import lombok.Data;
 
 @Data

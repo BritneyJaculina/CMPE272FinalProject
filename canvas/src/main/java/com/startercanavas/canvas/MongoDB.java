@@ -13,7 +13,7 @@ public class MongoDB {
     public static void main( String[] args ) {
 
         // path to MongoDB client; probably move this later
-        String uri = "mongodb+srv://tommydao:JFSIrjp1AYzJwiKC@cmpe202.nhyxsca.mongodb.net/?retryWrites=true&w=majority";
+        String uri = "mongodb+srv://britneyjaculina:Schollprojects123@cmpe272finalproject.xpknu.mongodb.net/?retryWrites=true&w=majority&appName=CMPE272FinalProject";
 
 
 

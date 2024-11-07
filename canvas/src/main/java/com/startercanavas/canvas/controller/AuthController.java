@@ -1,11 +1,9 @@
 package com.startercanavas.canvas.controller;
 
-import com.startercanavas.canvas.model.Role;
 import com.startercanavas.canvas.model.UserEntity;
 import com.startercanavas.canvas.payload.request.LoginRequest;
 import com.startercanavas.canvas.payload.request.SignupRequest;
 import com.startercanavas.canvas.payload.response.AuthResponse;
-import com.startercanavas.canvas.repository.RoleRepository;
 import com.startercanavas.canvas.repository.UserRepository;
 import com.startercanavas.canvas.security.JWTGenerator;
 import org.springframework.beans.factory.annotation.Autowired;

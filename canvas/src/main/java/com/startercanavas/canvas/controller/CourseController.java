@@ -1,7 +1,7 @@
 package com.startercanavas.canvas.controller;
 
-import com.startercanavas.canvas.model.Course;
-import com.startercanavas.canvas.service.CourseService;
+import com.startercanavas.canvas.model.Accounts;
+import com.startercanavas.canvas.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,37 +15,37 @@ import java.util.Optional;
 @CrossOrigin(origins="http://localhost:3000")
 public class CourseController {
     @Autowired
-    private CourseService courseService;
+    private AccountService courseService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Course>> getCourse(@PathVariable String id) {
-        return new ResponseEntity<Optional<Course>> (courseService.getCourse(id), HttpStatus.OK);
+    public ResponseEntity<Optional<Accounts>> getCourse(@PathVariable String id) {
+        return new ResponseEntity<Optional<Accounts>> (courseService.getCourse(id), HttpStatus.OK);
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Course>> getAllCourses() {
-        return new ResponseEntity<List<Course>> (courseService.getAllCourses(), HttpStatus.OK);
+    public ResponseEntity<List<Accounts>> getAllCourses() {
+        return new ResponseEntity<List<Accounts>> (courseService.getAllCourses(), HttpStatus.OK);
     }
 
-    @PatchMapping("/{id}")
-    public ResponseEntity<Optional<Course>> updateCourse(@Validated @RequestBody Optional<Course> newCourseData, @PathVariable String id) {
-        Optional<Course> oldCourseData = courseService.getCourse(id);
-        return new ResponseEntity<Optional<Course>> (courseService.updateCourse(newCourseData, oldCourseData),HttpStatus.OK);
-    }
+/*    @PatchMapping("/{id}")
+    public ResponseEntity<Optional<Accounts>> updateCourse(@Validated @RequestBody Optional<Accounts> newCourseData, @PathVariable String id) {
+        Optional<Accounts> oldCourseData = courseService.getCourse(id);
+        return new ResponseEntity<Optional<Accounts>> (courseService.updateCourse(newCourseData, oldCourseData),HttpStatus.OK);
+    }*/
 
     @GetMapping("/professor")
-    public ResponseEntity<List<Course>> getCoursesByProfessor(@RequestParam("professorName") String profName)  {
-        return new ResponseEntity<List<Course>> (courseService.getAllCoursesByProfessor(profName), HttpStatus.OK);
+    public ResponseEntity<List<Accounts>> getCoursesByProfessor(@RequestParam("professorName") String profName)  {
+        return new ResponseEntity<List<Accounts>> (courseService.getAllCoursesByProfessor(profName), HttpStatus.OK);
     }
 
     @PostMapping("/newCourse")
-    public ResponseEntity<String> addDocument(@RequestBody Course newCourse){
+    public ResponseEntity<String> addDocument(@RequestBody Accounts newCourse){
         courseService.addCourse(newCourse);
         return new ResponseEntity<>("Document successfully added", HttpStatus.CREATED);
     }
 
     @GetMapping("/name")
-    public ResponseEntity<Optional<Course>> getCourseByName(@RequestParam("courseName") String courseName){
-        return new ResponseEntity<Optional<Course>>(courseService.findByCourseName(courseName), HttpStatus.OK);
+    public ResponseEntity<Optional<Accounts>> getCourseByName(@RequestParam("courseName") String courseName){
+        return new ResponseEntity<Optional<Accounts>>(courseService.findByCourseName(courseName), HttpStatus.OK);
     }
 }
