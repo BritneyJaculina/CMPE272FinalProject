@@ -7,18 +7,25 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
+import java.util.List;
 @Document(collection = "accounts")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Accounts {
+public class AccessPolicy {
     @Id
-
     private ObjectId id;
-    private String account_id;
-    private String user_id;
-    private String account_type;
-    private String balance;
 
+    private String policyName;
+    private String description;
+
+    private String rules; // e.g., JSON object {"role": "HR Manager", "time": "9-5", ...}
+
+    private List<UserEntity> allowedUsers;
+
+    private List<Device> allowedDevices;
+
+    private List<Resources> resources;
+
+    // Getters and Setters
 }

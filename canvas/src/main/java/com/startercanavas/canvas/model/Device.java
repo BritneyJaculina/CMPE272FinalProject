@@ -8,17 +8,21 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-@Document(collection = "accounts")
+@Document(collection = "devices")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Accounts {
+public class Device {
     @Id
-
     private ObjectId id;
-    private String account_id;
-    private String user_id;
-    private String account_type;
-    private String balance;
+
+    private String deviceId;
+    private String type;
+    private String operatingSystem;
+
+    private boolean isActive;
+
+    // Optional: Link device to user
+    private UserEntity user;
 
 }
